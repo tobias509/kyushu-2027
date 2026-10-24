@@ -27,7 +27,8 @@ body{margin:0}img{max-width:100%}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{background:var(--bg)}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-tap-highlight-color:transparent}
+html{font-size:17.5px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.6;-webkit-tap-highlight-color:transparent}
 a{color:var(--pri)}
 button,input,select{font:inherit;color:inherit}
 button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
@@ -37,7 +38,8 @@ h1,h2,h3{margin:0;text-wrap:balance;font-family:var(--display)}
 
 /* 頂部 */
 .top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:6px 4px 14px}
-.top h1{font-size:1.9rem;font-weight:800;letter-spacing:.02em;line-height:1.25}
+.top h1{font-size:1.75rem;font-weight:800;letter-spacing:.02em;line-height:1.25;word-break:keep-all;text-wrap:wrap}
+.top p{word-break:keep-all}
 .top p{margin:2px 0 0;color:var(--sub);font-size:.88rem}
 .count{flex:none;text-align:right;background:var(--card);border-radius:16px;padding:8px 12px;box-shadow:var(--shadow);line-height:1.25}
 .count b{display:block;font-family:var(--num);font-size:1.35rem;color:var(--onsen)}
@@ -268,8 +270,8 @@ form.add{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
 
 /* 底部分頁列 */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
-.tabbar .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.tabbar button{border:0;background:none;display:grid;justify-items:center;gap:2px;padding:4px 0;font-size:.7rem;font-weight:500;color:var(--faint);cursor:pointer}
+.tabbar .in{max-width:420px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.tabbar button{border:0;background:none;display:grid;justify-items:center;gap:2px;padding:4px 0;font-size:.78rem;font-weight:500;color:var(--faint);cursor:pointer}
 .tabbar svg{width:24px;height:24px}
 .tabbar button[aria-selected="true"]{color:var(--pri);font-weight:700}
 
