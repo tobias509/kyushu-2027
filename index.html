@@ -226,41 +226,6 @@ dl.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .tel .no button,.copy{border:0;background:var(--bg);border-radius:999px;font-size:.74rem;font-weight:700;color:var(--sub);padding:3px 10px;cursor:pointer}
 .tel.urgent .no a{color:var(--t-eat)}
 
-/* 記帳 */
-.sum{background:linear-gradient(140deg,#6A86F4,#8BA4F8);color:#fff;border-radius:24px;padding:18px;display:grid;gap:10px;box-shadow:var(--shadow)}
-.sum .lb{font-size:.8rem;opacity:.9}
-.sum .big{font-family:var(--num);font-weight:700;font-size:2.1rem;line-height:1.1}
-.sum .twd{font-family:var(--num);font-size:.95rem;opacity:.92}
-.bar{height:8px;border-radius:999px;background:rgba(255,255,255,.3);overflow:hidden}
-.bar i{display:block;height:100%;background:#fff;border-radius:999px}
-.sum .row2{display:flex;justify-content:space-between;font-size:.8rem;opacity:.95;gap:10px;flex-wrap:wrap}
-form.add{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
-.amt{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:16px;padding:6px 14px}
-.amt span{font-family:var(--num);font-weight:700;font-size:1.3rem;color:var(--sub)}
-.amt input{flex:1;min-width:0;border:0;background:transparent;font-family:var(--num);font-weight:700;font-size:1.6rem;padding:4px 0;outline:none}
-.fld{display:grid;gap:4px;min-width:0}
-.fld label{font-size:.78rem;color:var(--sub);font-weight:500}
-.fld input,.fld select{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 12px;font-size:.95rem;width:100%;min-width:0}
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-.pick{display:flex;flex-wrap:wrap;gap:6px}
-.pick button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;font-size:.84rem;cursor:pointer}
-.pick button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.primary{border:0;background:var(--pri);color:#fff;font-weight:700;border-radius:14px;padding:12px;font-size:1rem;cursor:pointer}
-.msg{font-size:.82rem;color:var(--t-eat);min-height:1.2em;margin:0}
-.cats{display:grid;gap:8px}
-.cat{display:grid;grid-template-columns:3.6rem 1fr auto;gap:10px;align-items:center;font-size:.84rem}
-.cat .tr{height:8px;border-radius:999px;background:var(--bg);overflow:hidden}
-.cat .tr i{display:block;height:100%;border-radius:999px;background:var(--pri)}
-.cat .v{font-family:var(--num);font-weight:700}
-.items{display:grid;gap:0}
-.it{display:grid;grid-template-columns:1fr auto auto;gap:4px 10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
-.it:last-child{border-bottom:0}
-.it .nm{font-size:.92rem;font-weight:500;min-width:0;overflow-wrap:anywhere}
-.it .mt{grid-column:1;font-size:.74rem;color:var(--sub)}
-.it .v{grid-row:1/3;grid-column:2;font-family:var(--num);font-weight:700}
-.it .del{grid-row:1/3;grid-column:3;border:0;background:var(--bg);border-radius:999px;font-size:.72rem;padding:4px 9px;color:var(--sub);cursor:pointer;white-space:nowrap}
-.it .del.confirm{background:var(--t-eat-bg);color:var(--t-eat);font-weight:700}
-.dayg{font-family:var(--num);font-size:.76rem;font-weight:700;color:var(--faint);padding:10px 0 2px;letter-spacing:.04em}
 .est{width:100%;border-collapse:collapse;font-size:.84rem}
 .est td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .est td:first-child{font-family:var(--num);font-weight:700;color:var(--faint);width:3.4rem;font-size:.76rem;padding-top:8px}
@@ -370,7 +335,6 @@ const IC={
  plane:SV('<path d="M2 12h20M15 5l7 7-7 7"/>'),
  plan:SV('<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h6.5a3 3 0 0 0 0-6h-5a3 3 0 0 1 0-6H16"/>'),
  gift:SV('<rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M3.5 13h17M12 9v11.5M12 9C10 5 6.5 5 6.5 7.5S12 9 12 9zm0 0c2-4 5.5-4 5.5-1.5S12 9 12 9z"/>'),
- money:SV('<rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10.5h18M15.5 15h2.5"/><path d="M6 6l9-3 1.5 3"/>'),
  order:SV('<path d="M6 3v8M4 3v4a2 2 0 0 0 4 0V3M6 11v10M16 3c-2 0-3 2.5-3 6s1.5 4 3 4v8"/>'),
  info:SV('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.4"/>')
 };
@@ -820,8 +784,8 @@ function rowHtml(r,mode){
 function wxHtml(d){
  const w=WX[d.wx];
  const q="https://www.google.com/search?q="+encodeURIComponent(w.nm+" 天氣");
- const body=w.hi!=null?`<b>${esc(w.nm)}</b>・2 月平均 <span class="temp hi">${w.hi}°</span> / <span class="temp lo">${w.lo}°</span><br><span style="color:var(--sub)">白天最高／清晨最低（氣象廳平年值）</span>`
-  :`<b>${esc(w.nm)}</b><br><span style="color:var(--sub)">${esc(w.mt)}</span>`;
+ const body=w.hi!=null?`<b>${esc(w.nm)}</b>・2 月平均 <span class="temp hi">${w.hi}°</span> / <span class="temp lo">${w.lo}°</span><br><span style="color:var(--sub)">白天最高／清晨最低（氣象廳平年值）</span><br><span class="small">出發前 16 天內重新整理頁面，就會換成即時預報</span>`
+  :`<b>${esc(w.nm)}</b><br><span style="color:var(--sub)">${esc(w.mt)}</span><br><span class="small">出發前 16 天內重新整理頁面，就會換成即時預報</span>`;
  return `<div class="wx">${IC.wx}<div class="wt" id="wxt">${body}</div><a href="${q}" target="_blank" rel="noopener">即時預報</a></div>`;
 }
 const WXC=c=>c===0?"晴":c<=2?"晴時多雲":c===3?"陰":c<=48?"霧":c<=57?"毛毛雨":c<=67?"雨":c<=77?"雪":c<=82?"陣雨":c<=86?"陣雪":"雷雨";
@@ -831,7 +795,7 @@ async function wxLive(n){
  const date=`2027-02-${String(n+1).padStart(2,"0")}`;
  const days=(Date.UTC(2027,1,n+1)-twToday)/864e5;if(days<0||days>15)return;
  try{
-  const k=d.wx;wxCache[k]=wxCache[k]||fetch(`https://api.open-meteo.com/v1/forecast?latitude=${w.la}&longitude=${w.lo_}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=16`).then(r=>r.json());
+  const k=d.wx;wxCache[k]=wxCache[k]||fetch(`https://api.open-meteo.com/v1/forecast?latitude=${w.la}&longitude=${w.lo_}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=16`).then(r=>r.json()).catch(e=>{delete wxCache[k];throw e});
   const j=await wxCache[k];const i=j.daily.time.indexOf(date);if(i<0||cur!==n)return;
   const el=document.getElementById("wxt");if(!el)return;
   el.innerHTML=`<b>${esc(w.nm)}</b>・${WXC(j.daily.weather_code[i])} <span class="temp hi">${Math.round(j.daily.temperature_2m_max[i])}°</span> / <span class="temp lo">${Math.round(j.daily.temperature_2m_min[i])}°</span>・降雨 ${j.daily.precipitation_probability_max[i]??"-"}%<br><span style="color:var(--sub)">即時預報（Open-Meteo）</span>`;
@@ -920,91 +884,6 @@ document.addEventListener("click",e=>{
  giftReg=b.dataset.greg;store.set("ky-greg",giftReg);renderGift();
 });
 
-/* ---------- 記帳分頁 ---------- */
-const CATS=["餐飲","交通","門票","購物","住宿","其他"];
-const PAYS=["現金","信用卡","IC 卡"];
-let L=store.get("ky-ledger",{items:[],rate:0.21,budget:0});
-if(!Array.isArray(L.items))L.items=[];
-let pickCat="餐飲",pickPay="現金",pendingDel=null;
-const save=()=>store.set("ky-ledger",L);
-function ledgerText(){
- const by={};L.items.forEach(i=>(by[i.d]=by[i.d]||[]).push(i));
- const tot=L.items.reduce((a,i)=>a+i.amt,0);
- let t=`【九州家族行 記帳】共 ${yen(tot)}（約 NT$${Math.round(tot*L.rate).toLocaleString("en-US")}）\n`;
- DAYS.forEach(d=>{const k=d.d;if(by[k]){t+=`\n${k}（${d.w}）\n`;by[k].forEach(i=>t+=`・${i.name||i.cat} ${yen(i.amt)}（${i.cat}・${i.pay}）\n`)}});
- if(by["其他"]){t+="\n其他日期\n";by["其他"].forEach(i=>t+=`・${i.name||i.cat} ${yen(i.amt)}（${i.cat}・${i.pay}）\n`)}
- return t;
-}
-function renderMoney(){
- const tot=L.items.reduce((a,i)=>a+i.amt,0);
- const todayKey=tripDay>=1&&tripDay<=14?DAYS[tripDay-1].d:null;
- const todaySum=todayKey?L.items.filter(i=>i.d===todayKey).reduce((a,i)=>a+i.amt,0):0;
- const pct=L.budget>0?Math.min(100,tot/L.budget*100):0;
- const catSum=CATS.map(c=>[c,L.items.filter(i=>i.cat===c).reduce((a,i)=>a+i.amt,0)]);
- const maxC=Math.max(1,...catSum.map(x=>x[1]));
- const defDay=todayKey||"2/2";
- const by={};L.items.forEach(i=>(by[i.d]=by[i.d]||[]).push(i));
- const order=[...DAYS.map(d=>d.d),"其他"].filter(k=>by[k]);
- const estMin=EST.reduce((a,e)=>a+e[2],0),estMax=EST.reduce((a,e)=>a+e[3],0);
- $("p-money").innerHTML=`
-  <div class="ph"><h2>記帳</h2><p>記錄只存在這支手機的瀏覽器，換手機或清除資料就會不見</p></div>
-  <div class="sum">
-   <div><div class="lb">已花費</div><div class="big">${yen(tot)}</div><div class="twd">約 NT$${Math.round(tot*L.rate).toLocaleString("en-US")}</div></div>
-   ${L.budget>0?`<div class="bar"><i style="width:${pct}%"></i></div><div class="row2"><span>預算 ${yen(L.budget)}</span><span>${tot>L.budget?"已超過 "+yen(tot-L.budget):"還剩 "+yen(L.budget-tot)}</span></div>`:`<div class="row2"><span>在下方設定預算，就能看到剩多少</span></div>`}
-   ${todayKey?`<div class="row2"><span>今天（${todayKey}）</span><span class="num">${yen(todaySum)}</span></div>`:""}
-  </div>
-  <form class="box add" id="addf" novalidate>
-   <h3>新增一筆</h3>
-   <div class="amt"><span>¥</span><input id="f-amt" inputmode="numeric" pattern="[0-9]*" placeholder="0" aria-label="金額（日圓）"></div>
-   <div class="fld"><label for="f-name">項目</label><input id="f-name" placeholder="例：中洲屋台拉麵" maxlength="40"></div>
-   <div class="fld"><label>分類</label><div class="pick" id="f-cat">${CATS.map(c=>`<button type="button" data-v="${c}" aria-pressed="${c===pickCat}">${c}</button>`).join("")}</div></div>
-   <div class="two">
-    <div class="fld"><label for="f-day">日期</label><select id="f-day">${DAYS.map(d=>`<option value="${d.d}" ${d.d===defDay?"selected":""}>${d.d}（${d.w}）</option>`).join("")}<option value="其他">其他</option></select></div>
-    <div class="fld"><label>付款</label><div class="pick" id="f-pay">${PAYS.map(c=>`<button type="button" data-v="${c}" aria-pressed="${c===pickPay}">${c}</button>`).join("")}</div></div>
-   </div>
-   <p class="msg" id="f-msg" role="status"></p>
-   <button class="primary" type="submit">記下來</button>
-  </form>
-  ${L.items.length?`<div class="box"><h3>分類統計</h3><div class="cats">${catSum.map(([c,v])=>`<div class="cat"><span>${c}</span><div class="tr"><i style="width:${v/maxC*100}%"></i></div><span class="v">${yen(v)}</span></div>`).join("")}</div></div>
-  <div class="box"><h3 style="justify-content:space-between">明細<button type="button" class="copy" id="cpy">複製明細</button></h3>
-   <div class="items">${order.map(k=>`<div class="dayg">${k==="其他"?"其他日期":k}</div>`+by[k].slice().reverse().map(i=>`<div class="it"><span class="nm">${esc(i.name||i.cat)}</span><span class="mt">${esc(i.cat)}・${esc(i.pay)}</span><span class="v">${yen(i.amt)}</span><button type="button" class="del${pendingDel===i.id?" confirm":""}" data-del="${i.id}">${pendingDel===i.id?"確定刪除？":"刪除"}</button></div>`).join("")).join("")}</div>
-   <textarea id="cpyfb" hidden readonly style="width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;padding:8px;font-size:.8rem"></textarea>
-  </div>`:`<div class="box" style="text-align:center;color:var(--sub);font-size:.9rem">還沒有記錄。上面輸入金額，按「記下來」就會出現在這裡。</div>`}
-  <div class="box"><h3>設定</h3>
-   <div class="two">
-    <div class="fld"><label for="s-budget">總預算（日圓）</label><input id="s-budget" inputmode="numeric" value="${L.budget||""}" placeholder="例：150000"></div>
-    <div class="fld"><label for="s-rate">匯率（1 日圓 = ? 台幣）</label><input id="s-rate" inputmode="decimal" value="${L.rate}"></div>
-   </div>
-   <p class="small">匯率預設 0.21，出發前請改成實際匯率。</p>
-  </div>
-  <details class="alt" style="margin-top:0"><summary>預估花費：每人門票＋交通 約 ${yen(estMin)}～${yen(estMax)}</summary><div class="in">
-   <p>依行程表上的票價估算，不含住宿、租車、油錢、新幹線和餐費。</p>
-   <table class="est"><tbody>${EST.map(e=>`<tr><td>${e[0]}</td><td>${esc(e[1])}</td><td>${e[2]===e[3]?yen(e[2]):yen(e[2])+"～"+yen(e[3]).slice(1)}</td></tr>`).join("")}</tbody>
-   <tfoot><tr><td></td><td>合計（每人）</td><td>${yen(estMin)}～${yen(estMax).slice(1)}</td></tr></tfoot></table>
-  </div></details>`;
-}
-document.addEventListener("click",e=>{
- const p=e.target.closest("#f-cat button,#f-pay button");
- if(p){const grp=p.parentElement;grp.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===p));if(grp.id==="f-cat")pickCat=p.dataset.v;else pickPay=p.dataset.v;return}
- const d=e.target.closest("[data-del]");
- if(d){const id=d.dataset.del;if(pendingDel===id){L.items=L.items.filter(i=>i.id!==id);pendingDel=null;save()}else pendingDel=id;renderMoney();return}
- if(e.target.id==="cpy"){const t=ledgerText();const fb=()=>{const ta=$("cpyfb");ta.hidden=false;ta.value=t;ta.focus();ta.select();e.target.textContent="已選取，請手動複製"};
-  try{navigator.clipboard.writeText(t).then(()=>{e.target.textContent="已複製"},fb)}catch(_){fb()}}
-});
-document.addEventListener("submit",e=>{
- if(e.target.id!=="addf")return;e.preventDefault();
- const amt=parseInt(String($("f-amt").value).replace(/[^\d]/g,""),10);
- if(!(amt>0)){$("f-msg").textContent="請輸入金額（日圓，只要數字）";$("f-amt").focus();return}
- L.items.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),d:$("f-day").value,cat:pickCat,pay:pickPay,name:$("f-name").value.trim(),amt});
- const ok=save();pendingDel=null;renderMoney();
- $("f-msg").textContent=ok?`已記下 ${yen(amt)}`:"已記下，但這個瀏覽器無法保存，關掉頁面就會不見";
- $("f-msg").style.color=ok?"var(--sight)":"var(--t-eat)";
-});
-document.addEventListener("change",e=>{
- if(e.target.id==="s-budget"){L.budget=parseInt(String(e.target.value).replace(/[^\d]/g,""),10)||0;save();renderMoney()}
- if(e.target.id==="s-rate"){const r=parseFloat(e.target.value);if(r>0&&r<5){L.rate=r;save()}renderMoney()}
-});
-
 /* ---------- 旅行資訊分頁 ---------- */
 const FX={rate:(()=>{const r=parseFloat(store.get("ky-rate","0.21"));return r>0&&r<5?r:0.21})(),src:"上次使用的匯率"};
 fetch("https://open.er-api.com/v6/latest/JPY").then(r=>r.json()).then(j=>{
@@ -1026,6 +905,7 @@ document.addEventListener("input",e=>{
 });
 document.addEventListener("click",e=>{const b=e.target.closest("[data-fx]");if(!b)return;$("fx-jpy").value=(+b.dataset.fx).toLocaleString();$("fx-twd").value=fxFmt(+b.dataset.fx*FX.rate)});
 function renderInfo(){
+ const estMin=EST.reduce((a,e)=>a+e[2],0),estMax=EST.reduce((a,e)=>a+e[3],0);
  $("p-info").innerHTML=`
   <div class="ph"><h2>旅行資訊</h2><p>匯率換算、航班、住宿、緊急電話、自駕提醒</p></div>
   <div class="chips"><a href="#i-fx">日幣換算</a><a href="#i-fly">航班</a><a href="#i-stay">住宿</a><a href="#i-sos">緊急電話</a><a href="#i-car">自駕</a></div>
@@ -1038,6 +918,11 @@ function renderInfo(){
    <label class="fxrate">匯率：1 日圓 = <input id="fx-rate" class="num" inputmode="decimal" value="${FX.rate}"> 台幣</label>
    <p class="small"><span id="fx-src">${FX.src}</span>，也可以手動改。<a href="https://rate.bot.com.tw/xrt?Lang=zh-TW" target="_blank" rel="noopener">查台銀即時牌告 ↗</a></p>
   </section>
+  <details class="alt" ><summary>預估花費：每人門票＋交通 約 ${yen(estMin)}～${yen(estMax)}</summary><div class="in">
+   <p>依行程表上的票價估算，不含住宿、租車、油錢、新幹線和餐費。</p>
+   <table class="est"><tbody>${EST.map(e=>`<tr><td>${e[0]}</td><td>${esc(e[1])}</td><td>${e[2]===e[3]?yen(e[2]):yen(e[2])+"～"+yen(e[3]).slice(1)}</td></tr>`).join("")}</tbody>
+   <tfoot><tr><td></td><td>合計（每人）</td><td>${yen(estMin)}～${yen(estMax).slice(1)}</td></tr></tfoot></table>
+  </div></details>
   <section class="box" id="i-fly"><h3>航班</h3>
    <div class="fly"><span class="k">去程・2/2（二）</span><div class="route">高雄小港 ${IC.plane} 熊本</div>
     <div class="times">08:45<small>台灣</small> → 11:50<small>日本</small></div>
