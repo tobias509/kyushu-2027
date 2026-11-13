@@ -418,6 +418,17 @@ dialog#ed::backdrop{background:rgba(0,0,0,.6)}
 .pk-add{display:flex;gap:6px;padding:8px 12px;border-top:1px solid var(--line)}
 .pk-add input{flex:1;min-width:0;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:6px 12px}
 @media (prefers-reduced-motion:reduce){.brandart .btrain,.dchip.bounce b{animation:none}}
+
+/* 導遊小故事：點開才顯示 */
+details.story{padding:0}
+details.story>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:.8rem;font-weight:700;letter-spacing:.06em}
+details.story>summary::-webkit-details-marker{display:none}
+details.story>summary::after{content:"點開看";margin-left:auto;font-size:.74rem;font-weight:500;letter-spacing:0;opacity:.75}
+details.story[open]>summary::after{content:"收起"}
+details.story>summary::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+details.story[open]>summary::before{transform:rotate(45deg)}
+details.story>p{margin:0;padding:0 12px 10px}
+.s details.story>summary{color:var(--sight)}.f details.story>summary{color:var(--food)}.b details.story>summary{color:var(--shop)}.m details.story>summary{color:var(--move)}.h details.story>summary{color:var(--stay)}
 </style></head><body>
 
 <div class="app">
@@ -902,7 +913,7 @@ function rowHtml(r,mode){
   ${r.how?`<div class="how">${esc(r.how)}</div>`:""}
   ${r.nt.length?`<ul class="nt">${r.nt.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:""}
   ${tags?`<div class="tgs">${tags}</div>`:""}
-  ${r.st?`<div class="story"><b>導遊小故事</b>${esc(r.st)}</div>`:""}
+  ${r.st?`<details class="story"><summary>導遊小故事</summary><p>${esc(r.st)}</p></details>`:""}
   ${nav}</div></li>`;
 }
 function wxHtml(d){
