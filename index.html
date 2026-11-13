@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2027 九州家族行</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="theme-color" content="#15181D"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2027 九州家族行</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&family=Quicksand:wght@500;600;700&display=swap">
 <style>
@@ -7,19 +7,20 @@ body{margin:0}img{max-width:100%}
 /* Layout: 手機 App 版面。上方日期列（sticky）→ 單日檢視（每日卡片＋分類時間軸），底部固定分頁列：行程／伴手禮／記帳／旅行資訊。
    淺色單一主題（韓系清新：大量留白、粉彩分類色、圓角、柔和陰影） */
 :root{
-  color-scheme:light;
-  --bg:#F3F6F4; --card:#FFFFFF; --ink:#1D2A26; --sub:#5D6E68; --faint:#94A39D; --line:#D8E2DD;
-  --pri:#2F6B57; --pri-soft:#DCEBE4; --onsen:#B5452F; --onsen-soft:#F7E3DD;
+  color-scheme:dark;
+  --bg:#15181D; --card:#1F242B; --ink:#E8EAED; --sub:#A3ADB8; --faint:#7D8894; --line:#3A424D;
+  --head:#262C34; --brass:#C9A45C; --on-pri:#10140F; --now:#FF5A4E;
+  --pri:#5FB98E; --pri-soft:rgba(95,185,142,.16); --onsen:#C9A45C; --onsen-soft:rgba(201,164,92,.16);
   --display:"Noto Serif TC","Songti TC",serif;
-  --sight:#25936F; --sight-bg:#E4F5EE;
-  --food:#E2673F; --food-bg:#FFF0E8;
-  --move:#3F7FE0; --move-bg:#E8F1FF;
-  --shop:#8A5FD0; --shop-bg:#F1EBFC;
-  --stay:#A98014; --stay-bg:#FFF5D6;
-  --t-eat:#E04452; --t-eat-bg:#FFEAEC;
-  --t-menu:#C96A06; --t-menu-bg:#FFF1D8;
-  --t-buy:#B2437F; --t-buy-bg:#FCE9F3;
-  --t-book:#2160E0; --t-book-bg:#E2ECFF;
+  --sight:#E8A33D; --sight-bg:rgba(232,163,61,.15);
+  --food:#E2625E; --food-bg:rgba(217,83,79,.16);
+  --move:#5FB98E; --move-bg:rgba(95,185,142,.14);
+  --shop:#A693D6; --shop-bg:rgba(142,124,195,.18);
+  --stay:#4FA3C7; --stay-bg:rgba(79,163,199,.15);
+  --t-eat:#FF8A84; --t-eat-bg:rgba(217,83,79,.18);
+  --t-menu:#F0B35A; --t-menu-bg:rgba(240,166,58,.16);
+  --t-buy:#D59AE0; --t-buy-bg:rgba(180,110,200,.18);
+  --t-book:#7FA8F5; --t-book-bg:rgba(91,141,239,.18);
   --font:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;
   --num:"Quicksand","Noto Sans TC","PingFang TC",sans-serif;
   --r:16px; --shadow:0 0 0 1px var(--line);
@@ -290,11 +291,139 @@ dl.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .oshow .zh{margin:0;font-size:1rem;color:#666}
 .oshow .tip{margin:0;font-size:.8rem;color:#999}
 .oshow button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;border:0;background:#eee;border-radius:999px;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
+
+/* ===== 暗色鐵道風配色＋週曆拖曳（與 planner 融合） ===== */
+a{color:var(--brass)}
+.illo{display:block;color:var(--ink)}
+.illo .f-a1{fill:var(--sight)}.illo .f-a2{fill:#D9534F}.illo .f-a3{fill:var(--stay)}.illo .f-a4{fill:var(--move)}.illo .f-br{fill:var(--brass)}.illo .brass-s{stroke:var(--brass)}
+.brandart{width:min(170px,45vw);margin-bottom:8px}
+.brandart .btrain{animation:btrain 4s ease-in-out infinite}
+@keyframes btrain{50%{transform:translateX(3px)}}
+.top{border-bottom:1.5px solid var(--line);margin-bottom:12px}
+.count{border-top:2px solid var(--brass)}
+.dayhead,.flights{border-top:3px solid var(--brass)}
+.dchip[aria-current="true"]{background:var(--pri);color:var(--on-pri)}
+.dchip[aria-current="true"] small,.dchip[aria-current="true"] span,.dchip[aria-current="true"] i{color:rgba(16,20,15,.78)}
+.dchip.bounce b{animation:dbounce 320ms ease-out}
+@keyframes dbounce{45%{transform:translateY(-3px) scale(1.12)}}
+.strip{position:relative;padding-top:36px}
+.dillo{position:absolute;top:2px;left:0;width:40px;height:30px;pointer-events:none}
+.dillo .illo{width:40px;height:30px}
+.nav{color:var(--on-pri)}
+button.nav{border:0;cursor:pointer;font:inherit;font-size:.82rem;font-weight:700}
+.nav.drive{background:var(--sight)}
+.tabbar{background:rgba(31,36,43,.96)}
+.tabbar .in{max-width:600px;grid-template-columns:repeat(5,1fr)}
+.gfil button[aria-pressed="true"]{color:#15181D}
+.fl.ed{background:var(--onsen-soft);color:var(--brass)}
+.fl.warn{background:var(--t-eat-bg);color:var(--t-eat)}
+.alt.snow>summary{color:var(--stay)}
+.daymap{justify-self:start}
+
+/* 檢視切換與工具列 */
+.vtool{display:flex;align-items:center;gap:8px;margin:2px 0 12px;flex-wrap:wrap}
+.vseg{display:flex;background:var(--card);border-radius:999px;box-shadow:var(--shadow);padding:3px}
+.vseg button{border:0;background:none;border-radius:999px;padding:6px 16px;font-weight:700;font-size:.92rem;color:var(--sub);cursor:pointer}
+.vseg button[aria-pressed="true"]{background:var(--brass);color:#15181D}
+.ibtn{border:1.5px solid var(--line);background:var(--card);border-radius:999px;min-width:40px;height:40px;padding:0 12px;font-weight:700;color:var(--ink);cursor:pointer}
+.ibtn.add{border-color:var(--pri);color:var(--pri)}
+.ibtn:disabled{opacity:.4;cursor:default}
+
+/* 週曆 */
+body.wk-mode .app{max-width:1180px}
+.wk-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px}
+.wk-tip{text-align:center;margin-bottom:8px}
+.wkwrap{overflow-x:auto;margin-inline:-16px;padding:0 16px 8px}
+.wk{display:grid;min-width:740px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.wk-h{background:var(--head);border-bottom:1.5px solid var(--line);padding:6px 2px;text-align:center;font-size:.74rem;color:var(--sub)}
+.wk-h.sel{box-shadow:inset 0 -3px 0 var(--pri)}
+.wk-h button{border:0;background:none;width:100%;cursor:pointer;color:inherit;font-size:inherit}
+.wk-h b{display:block;font-family:var(--num);font-size:.98rem;color:var(--ink)}
+.wk-axis{position:relative;border-right:1px solid var(--line)}
+.wk-axis span{position:absolute;right:6px;transform:translateY(-50%);font-family:var(--num);font-weight:700;font-size:.7rem;color:var(--faint)}
+.wk-col{position:relative;border-right:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% var(--hour)}
+.wk-col:last-child{border-right:0}
+.ev{position:absolute;border-radius:7px;background:var(--head);border:1px solid var(--line);border-left:4px solid var(--c);padding:2px 5px 8px;font-size:.7rem;line-height:1.3;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-x pan-y;cursor:pointer;transition:box-shadow .16s}
+.ev:hover{box-shadow:0 0 0 1px var(--c);z-index:3}
+.ev .et{font-family:var(--num);font-weight:700;color:var(--sub)}
+.ev .en{display:block;font-weight:500}
+.ev.ed{background:color-mix(in srgb,var(--head) 85%,var(--brass))}
+.ev.warn{box-shadow:0 0 0 1.5px var(--now)}
+.ev.holding{box-shadow:0 0 0 2px var(--brass)}
+.ev.dragging{opacity:.92;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 0 2px var(--brass);cursor:grabbing}
+.ev .rz{position:absolute;left:0;right:0;bottom:0;height:8px;cursor:ns-resize}
+.ev .rz::after{content:"";position:absolute;left:50%;bottom:2px;width:18px;height:2px;margin-left:-9px;background:var(--sub);border-radius:1px;opacity:0;transition:opacity .16s}
+.ev:hover .rz::after,.ev:focus-visible .rz::after{opacity:1}
+
+/* 預覽小卡、編輯視窗、提示 */
+.pop{position:fixed;z-index:40;width:300px;max-width:calc(100vw - 20px);background:var(--card);border:1.5px solid var(--line);border-top:3px solid var(--c,var(--brass));border-radius:14px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);display:grid;gap:4px}
+.pop h4{margin:0;font-size:1.02rem}
+.pop p{margin:0;font-size:.86rem;color:var(--sub)}
+.pop .acts{margin-top:8px;align-items:center}
+dialog#ed{background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-top:3px solid var(--brass);border-radius:18px;padding:18px;width:min(520px,calc(100vw - 20px))}
+dialog#ed::backdrop{background:rgba(0,0,0,.6)}
+#edf{display:grid;gap:10px}
+#edf h3{font-size:1.15rem}
+#edf label{display:grid;gap:4px;font-size:.84rem;color:var(--sub)}
+#edf input,#edf select,#edf textarea{background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;font-size:1rem}
+#edf input:focus,#edf select:focus,#edf textarea:focus{outline:none;border-color:var(--brass)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--head);border:1.5px solid var(--brass);border-radius:12px;padding:9px 16px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;max-width:calc(100vw - 30px)}
+.toast.show{opacity:1}
+
+/* 備案分頁 */
+.bk-hero{grid-template-columns:auto 1fr;align-items:center;gap:14px;border-top:3px solid var(--stay)}
+.bk-ic .illo{width:64px;height:48px}
+.bk-hero h3 svg{width:22px;height:22px;color:var(--stay)}
+.bk-when{margin:4px 0 6px;font-weight:700;color:var(--brass)}
+.bk-day{gap:12px}
+.bk-go{margin-left:auto;border:0;background:none;color:var(--brass);font-weight:700;font-size:.86rem;cursor:pointer}
+.bk-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bk-main,.bk-alt{border-radius:14px;padding:10px 12px;display:grid;gap:4px;align-content:start}
+.bk-main{background:var(--bg);border:1.5px dashed var(--line)}
+.bk-alt{background:var(--stay-bg);border:1.5px solid var(--stay)}
+.bk-main p,.bk-alt p{margin:0;font-size:.95rem}
+.bk-main p{color:var(--sub);text-decoration:line-through;text-decoration-color:rgba(163,173,184,.5)}
+.bk-l{font-size:.74rem;font-weight:700;letter-spacing:.08em;color:var(--faint)}
+.bk-alt .bk-l{color:var(--stay)}
+.bk-t{display:flex;gap:6px;align-items:flex-start;font-size:.82rem;color:var(--sub)}
+.bk-t svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--move)}
+.ck{display:grid;gap:8px}
+.ck label{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;cursor:pointer}
+.ck input{width:22px;height:22px;accent-color:var(--pri);flex:none;margin-top:1px}
+.ck input:checked+span{color:var(--sub);text-decoration:line-through}
+.bk-links{display:grid;gap:6px}
+.bk-links a{text-decoration:none;font-weight:700;background:var(--bg);border-radius:12px;padding:9px 12px}
+@media (max-width:520px){.bk-cmp{grid-template-columns:1fr}.bk-main p{text-decoration:none}}
+
+/* 攜帶用品 */
+.pk-prog{display:flex;align-items:center;gap:10px}
+.pk-prog .bar{flex:1;height:10px;border-radius:5px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+.pk-prog .bar i{display:block;height:100%;background:var(--pri);transition:width .2s}
+.pk-tool{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pk-tool input{flex:1;min-width:140px;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:7px 14px}
+.pk-tool .vseg button{padding:5px 12px;font-size:.84rem}
+.pk-grid{display:grid;gap:10px}
+.pk-card{border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.pk-card header{background:var(--c);color:#10140F;padding:7px 12px;display:flex;justify-content:space-between;font-weight:700}
+.pk{display:grid;grid-template-columns:24px 1fr 56px 30px;gap:8px;align-items:center;padding:7px 12px;border-top:1px solid var(--line)}
+.pk:first-of-type{border-top:0}
+.pk input[type=checkbox]{width:20px;height:20px;accent-color:var(--pri)}
+.pk .nm{display:block}
+.pk.done .nm{text-decoration:line-through;color:var(--sub)}
+.pk .pnt{width:100%;border:0;background:transparent;padding:0;font-size:.8rem;color:var(--sub)}
+.pk input[type=number]{width:56px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px 6px;font-size:.95rem}
+.pdel{border:0;background:none;color:var(--faint);cursor:pointer;font-size:1rem}
+.pk-add{display:flex;gap:6px;padding:8px 12px;border-top:1px solid var(--line)}
+.pk-add input{flex:1;min-width:0;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:6px 12px}
+@media (prefers-reduced-motion:reduce){.brandart .btrain,.dchip.bounce b{animation:none}}
 </style></head><body>
 
 <div class="app">
   <header class="top">
     <div>
+      <div class="brandart" id="brandart" aria-hidden="true"></div>
       <h1>2027 九州家族行</h1>
       <p>2/2（二）～ 2/15（一）・熊本機場進出・14 天 13 夜</p>
     </div>
@@ -311,6 +440,7 @@ dl.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
       <div class="strip-wrap"><div class="strip" id="strip" role="group" aria-label="選擇日期"></div></div>
       <div id="day"></div>
     </section>
+    <section id="p-alt" class="panel" role="tabpanel" aria-labelledby="tb-alt" hidden></section>
     <section id="p-gift" class="panel" role="tabpanel" aria-labelledby="tb-gift" hidden></section>
     <section id="p-order" class="panel" role="tabpanel" aria-labelledby="tb-order" hidden></section>
     <section id="p-info" class="panel" role="tabpanel" aria-labelledby="tb-info" hidden></section>
@@ -318,6 +448,17 @@ dl.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
 </div>
 
 <div class="oshow" id="os" hidden role="dialog" aria-modal="true" aria-label="給店員看"><button type="button" id="osx" aria-label="關閉">✕</button><p class="jp" id="osjp"></p><p class="zh" id="oszh"></p><p class="tip">點畫面任一處關閉</p></div>
+<div id="pop" class="pop" role="dialog" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<input type="file" id="impf" accept="application/json,.json" hidden>
+<dialog id="ed"><form id="edf"><h3 id="edt">調整行程</h3>
+<label>名稱<input name="ti" required></label>
+<div class="f2"><label>類別<select name="k"><option value="s">景點</option><option value="f">美食</option><option value="b">購物</option><option value="m">交通</option><option value="h">住宿・休息</option></select></label><label>哪一天<select name="n"></select></label></div>
+<div class="f2"><label>開始<input name="s" type="time"></label><label>結束<input name="e" type="time"></label></div>
+<label>怎麼去／費用<input name="how"></label>
+<label>注意事項（一行一項）<textarea name="nt" rows="3"></textarea></label>
+<div class="facts"><button type="button" id="edDel" class="nav" style="background:var(--food)">刪除</button><button type="button" id="edReset" class="nav" style="background:var(--head);color:var(--ink)">還原這筆</button><span style="flex:1"></span><button type="button" id="edCancel" class="nav" style="background:var(--head);color:var(--ink)">取消</button><button class="nav">儲存</button></div>
+</form></dialog>
 <nav class="tabbar" role="tablist" aria-label="分頁"><div class="in" id="tabbar"></div></nav>
 <div class="zoom" id="lb" hidden role="dialog" aria-modal="true" aria-label="照片"><button type="button" id="lbx" aria-label="關閉">✕</button><figure style="margin:0"><img id="lbimg" alt=""><p id="lbcap"></p></figure></div>
 
@@ -336,7 +477,8 @@ const IC={
  plan:SV('<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h6.5a3 3 0 0 0 0-6h-5a3 3 0 0 1 0-6H16"/>'),
  gift:SV('<rect x="3.5" y="9" width="17" height="11.5" rx="2"/><path d="M3.5 13h17M12 9v11.5M12 9C10 5 6.5 5 6.5 7.5S12 9 12 9zm0 0c2-4 5.5-4 5.5-1.5S12 9 12 9z"/>'),
  order:SV('<path d="M6 3v8M4 3v4a2 2 0 0 0 4 0V3M6 11v10M16 3c-2 0-3 2.5-3 6s1.5 4 3 4v8"/>'),
- info:SV('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.4"/>')
+ info:SV('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.4"/>'),
+ alt:SV('<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5M4.5 10.3l3.4-.9-.9-3.4M19.5 13.7l-3.4.9.9 3.4"/>')
 };
 const TYPES={s:"景點",f:"美食",m:"交通",b:"購物",h:"住宿・休息"};
 const TAGN={eat:"必吃",menu:"必點",buy:"必買",book:"預約"};
@@ -458,133 +600,126 @@ const DAYS=[
  ["湯布院花卉村","宮崎駿主題小物","","湯布院フローラルビレッジ"],
  ["貓頭鷹之森林","¥900／人","09:30–17:00","湯布院フクロウの森"]
  ]},
-{n:6,d:"2/7",w:"日",tag:"初二",r:"由布院 → 別府・地獄巡禮",wx:"bp",mode:"transit",bed:"別府（待訂）",
+{n:6,d:"2/7",w:"日",tag:"初二",r:"由布院 → 別府・鐵輪＋明礬",wx:"bp",mode:"transit",bed:"別府（待訂）",
  gather:["09:00","從住宿出發到由布院站前巴士中心；09:30 開車"],
  rows:[
  R("08:00–09:00","h","早餐、退房","","退房 08:00～11:00"),
  R("09:00–09:20","m","住宿 → 由布院站前巴士中心","步行","巴士約每小時 1 班，前一天先查好時刻","由布院駅前バスセンター"),
  R("09:30–10:30","m","由布院 → 別府站","亀の井巴士（→ 別府站西口）約 ¥1,000，或 JR 久大線經大分（約 1 小時 10 分）","春節人多，大行李不一定上得了車|班次以亀の井巴士官網為準","別府駅"),
  R("10:30–10:50","m","別府站 → 飯店寄放行李","步行"),
- R("10:50–11:20","m","別府站 → 鐵輪","亀の井巴士往鐵輪方向（約 20～25 分，班次多）・約 ¥400","可考慮別府巴士一日券（隔天也要搭）","鉄輪温泉"),
- R("11:20–12:20","f","午餐：鐵輪地獄蒸料理","步行","店家現場挑","",
-  {tg:[["eat","地獄蒸料理"]],st:"鐵輪一帶的地底溫泉蒸氣將近 100°C，當地人自古就用「地獄釜」蒸海鮮、蔬菜和雞蛋，只靠蒸氣和溫泉裡的礦物質調味。"}),
- R("12:20–13:00","s","海地獄","步行・共通觀覽券大人 ¥2,200（7 個地獄）","各地獄 8:00–17:00，全年無休|共通券在第一個地獄買|全部逛完約 2～3 小時（不含移動）","海地獄",
+ R("10:50–11:15","m","別府站 → 鐵輪","亀の井巴士往 APU（立命館亞洲太平洋大學）方向，約 25 分・約 ¥400","可考慮別府巴士一日券（隔天也要搭），划不划算出發前再算","鉄輪温泉"),
+ R("11:15–12:15","f","午餐：地獄蒸し工房 鐵輪（自己蒸食材）","步行","地獄蒸只排這一次，偏體驗|約 10:00–20:00，假日要排隊","地獄蒸し工房 鉄輪",
+  {tg:[["eat","地獄蒸料理"],["menu","自己蒸海鮮、蔬菜"]],st:"鐵輪一帶的地底溫泉蒸氣將近 100°C，當地人自古就用「地獄釜」蒸海鮮、蔬菜和雞蛋，只靠蒸氣和溫泉裡的礦物質調味。"}),
+ R("12:20–13:00","s","海地獄","步行・地獄共通觀覽券約 ¥2,200（價格以官網為準）","各地獄 8:00–17:00，全年無休|共通券在第一個地獄買；今天看 5 個，剩下血池、龍卷明天看（共通券能不能隔天用，出發前再確認）","海地獄",
   {tg:[["eat","溫泉蛋、地獄蒸布丁"]],st:"約 1,200 年前鶴見岳火山爆發形成，水溫約 98°C，鈷藍色像大海一樣。別府的地獄自古噴著熱泥和蒸氣、人無法靠近，才被叫做「地獄」。"}),
  R("13:00–13:35","s","鬼石坊主地獄","步行（海地獄隔壁）","灰色泥漿一直冒泡泡，像和尚的光頭","鬼石坊主地獄"),
  R("13:35–14:15","s","竈地獄","步行約 5 分","有溫泉蒸氣表演、可以泡腳","かまど地獄",
   {st:"以前祭祀竈門八幡宮時，會用這裡的溫泉蒸氣煮供飯，所以叫「竈」地獄。工作人員會示範對著溫泉吹氣，蒸氣瞬間變多。"}),
  R("14:15–14:35","s","鬼山地獄","步行（竈地獄隔壁）","養了很多鱷魚，趕時間可跳過","鬼山地獄",{fl:"可取消"}),
  R("14:35–15:05","s","白池地獄","步行約 5～10 分","白色溫泉池，趕時間可跳過","白池地獄",{fl:"可取消"}),
- R("15:05–15:30","m","鐵輪 → 柴石（血池、龍卷地獄）","亀の井巴士（班次少，含等車可能要半小時）","先查好班次，趕時間就取消鬼山、白池","血の池地獄"),
- R("15:30–16:00","s","血池地獄","步行","","血の池地獄",
-  {tg:[["buy","血の池軟膏"]],st:"日本最古老的天然地獄之一，奈良時代的《豐後國風土記》就有記載。紅色來自含氧化鐵的黏土，用這種紅泥做的「血の池軟膏」是別府的老牌伴手禮。"}),
- R("16:00–16:45","s","龍卷地獄","步行（就在隔壁）","間歇泉約 30～40 分鐘噴一次，要等|17:00 關門，最晚 16:30 前進場","龍巻地獄",
-  {st:"地底溫泉每隔約半小時就往上噴一次。上方的屋頂是特地蓋的，不然水柱可以噴到 50 公尺高。"}),
- R("16:45–17:15","m","柴石 → 別府站","步行約 15 分到 JR 亀川站，搭 JR 到別府約 5 分","","別府駅"),
+ R("15:05–15:20","m","鐵輪 → 明礬","亀の井巴士約 10 分","","みょうばん 湯の里"),
+ R("15:20–16:35","s","明礬溫泉・湯之花小屋（みょうばん湯の里）","步行・參觀免費；入浴大人 ¥600（想泡再付）","10:00–20:00（受理到 19:00），無休|附近的岡本屋可以吃地獄蒸布丁","みょうばん 湯の里",
+  {tg:[["buy","湯の花（入浴劑）"],["eat","岡本屋 地獄蒸布丁"]],st:"茅草屋頂的小屋裡，讓溫泉氣慢慢結晶成「湯之花」。這套從江戶時代流傳下來的製法，是日本國家重要無形民俗文化財。"}),
+ R("16:35–17:15","m","明礬 → 別府站","亀の井巴士約 30 分","","別府駅"),
  R("17:15–18:00","h","飯店 check in、休息"),
  R("18:00–20:00","f","晚餐、泡湯","步行","店家現場挑","",{tg:[["book","春節期間晚餐建議訂位"]]})
  ],
- note:"7 個地獄全部排進去，這天沒有緩衝；來不及就依序取消鬼山、白池。"},
-{n:7,d:"2/8",w:"一",r:"別府",wx:"bp",mode:"transit",bed:"別府（待訂）",
- gather:["08:30","別府站西口搭巴士到鶴見岳纜車"],
+ note:"這天比較滿（約 11:15–17:15 都在走）；太累就把明礬挪到 2/8 纜車之後。別府排法還在討論，以試算表為準。"},
+{n:7,d:"2/8",w:"一",r:"別府・纜車＋柴石",wx:"bp",mode:"transit",bed:"別府（待訂）",
+ gather:["08:30","別府站西口搭 36 系統巴士到鶴見岳纜車"],
  rows:[
- R("07:30–08:30","h","早餐","","別府整天不開車，搭巴士"),
- R("08:30–09:00","m","別府站西口 → 別府纜車","亀の井巴士約 20 分・約 ¥400","出發前先看纜車官網有沒有停駛（TEL 0977-22-2278）","別府ロープウェイ"),
- R("09:00–11:00","s","鶴見岳纜車（天氣好才上山）","纜車約 10 分到山頂・來回大人 ¥1,800","首班 9:00；冬季上山末班 16:30、下山末班 17:00|強風、濃霧會停駛|山頂可能結冰積雪，穿防滑鞋|不上山的話，直接去明礬，鐵輪多逛一下","別府ロープウェイ",
+ R("07:30–08:30","h","早餐","","別府整天不開車，搭巴士和 JR"),
+ R("08:30–09:00","m","別府站西口 → 別府纜車","36 系統巴士約 20 分・約 ¥400","出發前先看纜車官網有沒有停駛（TEL 0977-22-2278）","別府ロープウェイ"),
+ R("09:00–11:00","s","鶴見岳纜車（天氣好才上山）","纜車約 10 分到山頂・來回大人約 ¥1,800（官網另寫 ¥1,600，出發前確認）","首班 9:00；冬季上山末班 16:30、下山末班 17:00|強風、濃霧會停駛|山頂可能結冰積雪，穿防滑鞋|停駛就改去明礬或別府市區","別府ロープウェイ",
   {fl:"看天氣",st:"纜車從海拔約 500 公尺坐到 1,300 公尺，天氣好可以看到別府灣和整個別府市區。冬天山頂常出現「霧氷」，樹枝被凍成一片雪白。"}),
- R("11:00–11:20","m","纜車站 → 明礬溫泉","兩地之間沒有直達巴士","沒有合適交通就取消明礬或調整順序","みょうばん 湯の里"),
- R("11:20–12:30","s","明礬溫泉・湯之花小屋（みょうばん湯の里）","步行・入浴大人 ¥600（想泡再付）","10:00–20:00（受理到 19:00），無休","みょうばん 湯の里",
-  {tg:[["buy","湯の花（入浴劑）"],["eat","岡本屋 地獄蒸布丁"]],st:"茅草屋頂的小屋裡，讓溫泉氣慢慢結晶成「湯之花」。這套從江戶時代流傳下來的製法，是日本國家重要無形民俗文化財。"}),
- R("12:30–12:50","m","明礬 → 鐵輪","亀の井巴士約 5～10 分","","鉄輪温泉"),
- R("12:50–14:00","f","午餐：地獄蒸し工房 鐵輪（自己蒸食材）","步行","約 10:00–20:00，假日要排隊","地獄蒸し工房 鉄輪",{tg:[["eat","自己蒸海鮮、蔬菜"]]}),
- R("14:00–16:00","s","鐵輪溫泉街散步、足湯","步行","小店多在 17:00 前後關門","鉄輪温泉",
-  {st:"鐵輪是別府八湯之一，路邊水溝、屋頂到處都在冒白色湯煙。這片「湯けむり」景色被選為日本的重要文化景觀。"}),
- R("16:00–16:30","m","鐵輪 → 別府站","亀の井巴士約 20～25 分・約 ¥400","","別府駅"),
- R("16:30–18:00","h","飯店休息"),
- R("18:00–19:30","f","晚餐","步行","店家現場挑"),
- R("19:30–21:00","s","竹瓦溫泉（砂湯或一般溫泉）","步行（別府站約 10 分）・砂湯 ¥1,500／一般溫泉 ¥300","一般溫泉 6:30–22:30；砂湯 8:00–22:30（受理到 21:30）|每月第 3 個週三公休，2/8 週一可去|不想泡也可以到門口拍照","竹瓦温泉",
+ R("11:00–11:30","m","纜車站 → 別府站","36 系統巴士約 20～30 分","","別府駅"),
+ R("11:30–12:45","f","午餐：別府站周邊","步行","今天不吃地獄蒸，店家待選"),
+ R("12:45–13:15","m","別府站 → 柴石（血池、龍卷地獄）","JR 別府 → 亀川約 5 分，再步行約 15 分（或搭巴士）","","血の池地獄"),
+ R("13:15–13:45","s","血池地獄","步行","用昨天買的共通券","血の池地獄",
+  {tg:[["buy","血の池軟膏"]],st:"日本最古老的天然地獄之一，奈良時代的《豐後國風土記》就有記載。紅色來自含氧化鐵的黏土，用這種紅泥做的「血の池軟膏」是別府的老牌伴手禮。"}),
+ R("13:45–14:30","s","龍卷地獄","步行（就在隔壁）","間歇泉約 30～40 分鐘噴一次，要等|17:00 關門，最晚 16:30 前進場","龍巻地獄",
+  {st:"地底溫泉每隔約半小時就往上噴一次。上方的屋頂是特地蓋的，不然水柱可以噴到 50 公尺高。"}),
+ R("14:30–15:00","m","柴石 → 別府站","步行約 15 分到 JR 亀川站，搭 JR 到別府約 5 分","","別府駅"),
+ R("15:00–18:00","h","飯店休息"),
+ R("18:00–19:30","f","晚餐","步行","店家待選"),
+ R("19:30–20:00","s","竹瓦溫泉（外觀拍照）","步行（別府站約 10 分）","砂湯不排；想泡一般溫泉 ¥300（6:30–22:30）|每月第 3 個週三公休，2/8 週一可去","竹瓦温泉",
   {fl:"可取消",st:"1879 年創立，現在的唐破風木造建築建於 1938 年，是別府溫泉的象徵。砂湯是躺在熱砂裡，讓工作人員用砂蓋住全身。"}),
- R("21:00–21:15","m","回飯店","步行")
- ]},
+ R("20:00–20:15","m","回飯店","步行")
+ ],
+ alts:[{label:"纜車停駛備案",text:"上午改去明礬（湯之花小屋、岡本屋布丁），下午照樣去柴石；前一天的明礬就可以取消，讓 2/7 輕鬆一點。"}]},
 {n:8,d:"2/9",w:"二",r:"別府 → 黑川溫泉",wx:"kr",mode:"driving",bed:"旅館 やまの湯",
  gather:["08:00","飯店出發到租車店，取車後自駕"],
  rows:[
  R("07:00–08:00","h","早餐、退房","","前一晚查好九重、牧ノ戸峠有沒有下雪、結冰"),
  R("08:00–08:15","m","飯店 → 租車店","步行","例：トヨタレンタカー別府店（8:00–19:00）"),
- R("08:15–09:00","m","取車、放行李、設定導航","","帶台灣駕照正本＋日文譯本、護照|確認是冬季輪胎（スタッドレス）、有 ETC 卡|車上導航用 MAPCODE 或電話號碼設定"),
- R("09:00–10:30","m","別府 → 九重夢大吊橋","自駕：大分自動車道 別府IC → 九重IC → 縣道 40 號","九重 IC 之後是山路，標高約 800 公尺，清晨可能結冰|走高速公路比由布院內的やまなみハイウェイ前段安全","九重“夢”大吊橋"),
+ R("08:15–09:00","m","取車、放行李、設定導航","","帶台灣駕照正本＋日文譯本、護照|確認是冬季輪胎（スタッドレス）|導航設定「一般道路優先」，用 MAPCODE 或電話號碼設定目的地"),
+ R("09:00–10:30","m","別府 → 九重夢大吊橋","自駕：走一般道路，不走高速（過路費較貴）","九重一帶是山路，標高約 800 公尺，清晨可能結冰|山路比 Google Maps 多抓 20 分鐘","九重“夢”大吊橋"),
  R("10:30–11:30","s","九重夢大吊橋","步行・國中以上 ¥500","8:30–17:00|強風、天候不佳會封橋|停車場約 300 台","",
   {st:"2006 年開通，長 390 公尺、離谷底 173 公尺，是日本最高的步行吊橋。走到中間可以看到「震動の滝」的雄瀑和雌瀑。"}),
  R("11:30–12:30","f","午餐（吊橋附近）","","店家現場挑"),
  R("12:30–14:00","m","→ 黑川溫泉","自駕：縣道 40 號 → やまなみハイウェイ → 牧ノ戸峠 → 瀬の本 → 黑川","牧ノ戸峠標高約 1,330 公尺，是全程最容易結冰的路段，下午通常較安全|山路比 Google Maps 多抓 20 分鐘","旅館 やまの湯 黒川温泉"),
- R("14:00–14:30","h","旅館 やまの湯 停車、寄放行李","","黑川溫泉街很小，車停旅館後步行"),
- R("14:30–17:30","s","黑川溫泉街散步、入湯手形泡湯、甜點","步行・入湯手形 ¥1,300（可泡 3 間）","入湯手形在「風の舎」買（9:00–18:00）|外湯大多 8:30–21:00，各旅館不同|甜點店多在 17:00 左右關門","黒川温泉 風の舎",
+ R("14:00–14:30","h","旅館 やまの湯 停車、寄放行李","","停車、寄放行李已經問旅館，等回覆|黑川溫泉街很小，車停旅館後步行"),
+ R("14:30–16:00","s","黑川溫泉街散步、入湯手形泡湯、甜點","步行・入湯手形 ¥1,300（可泡 3 間）","入湯手形在「風の舎」買（9:00–18:00）|外湯大多 8:30–21:00，各旅館不同|甜點店多在 17:00 左右關門","黒川温泉 風の舎",
   {tg:[["buy","入湯手形（木牌，可留作紀念）"]],st:"黑川溫泉街沒有大型招牌，整區統一用木頭、石牆和杉樹營造山村氛圍。入湯手形是小國杉做的圓形木牌，買一片就能在三間旅館泡露天溫泉，泡完可以帶回家當紀念。"}),
- R("17:30–","h","旅館 やまの湯 check in、泡湯、晚餐","","1 泊 2 食，川側和室 14 畳|入住預定 16:00，退房 10:00 前","",{tg:[["eat","旅館會席料理"]]})
+ R("16:00–","h","旅館 やまの湯 check in、泡湯、晚餐","","1 泊 2 食，川側和室 14 畳|入住預定 16:00，退房 10:00 前|晚餐希望囲炉裏会席（已向旅館提出）","",{tg:[["eat","旅館會席料理"]]})
  ],
- alts:[{label:"下雪備案",snow:1,text:"不在別府取車，改搭「九州橫斷巴士」別府 → 黑川（九州產交巴士，需預約，一天約 3 班）。九重夢大吊橋取消。2/10 也搭巴士黑川 → 熊本，改在熊本取車。"}]},
-{n:9,d:"2/10",w:"三",r:"黑川 → 熊本",wx:"aso",mode:"driving",bed:"熊本（待訂）",
- gather:["09:00","退房後自駕去鍋ヶ滝"],
+ alts:[{label:"下雪備案",snow:1,text:"不在別府取車，改搭「九州橫斷巴士」別府 → 黑川（需預約）。九重夢大吊橋取消。詳細看「備案」分頁。"}]},
+{n:9,d:"2/10",w:"三",r:"黑川 → 阿蘇（一宮）",wx:"aso",mode:"driving",bed:"奥阿蘇のあかまつ（阿蘇神社附近）",
+ gather:["10:00","退房，溫泉街散步後自駕去鍋ヶ滝"],
  rows:[
- R("07:00–09:00","h","晨湯、早餐、退房","","退房 10:00 前"),
- R("09:00–09:30","m","黑川 → 鍋ヶ滝","自駕：國道 442 → 212 號，約 25～30 分","早上山路可能結冰，慢開","鍋ヶ滝公園"),
- R("09:30–10:30","s","鍋ヶ滝（可走到瀑布後方）","停車場步行約 5～10 分坡道・高中以上 ¥300","9:00–17:00（最後入園 16:30）|停車場約 48 台|坡道和瀑布後方會滑，穿防滑鞋","",
+ R("07:00–10:00","h","晨湯、早餐、退房","","退房 10:00 前"),
+ R("10:00–10:45","s","黑川溫泉街早晨散步","步行","退房後先把行李放車上","黒川温泉"),
+ R("10:45–11:15","m","黑川 → 鍋ヶ滝","自駕：國道 442 → 212 號，約 25～30 分","山路可能結冰，慢開","鍋ヶ滝公園"),
+ R("11:15–12:00","s","鍋ヶ滝（可走到瀑布後方）","停車場步行約 5～10 分坡道・高中以上 ¥300","9:00–17:00（最後入園 16:30）|停車場約 48 台|坡道和瀑布後方會滑，穿防滑鞋","",
   {st:"約 9 萬年前阿蘇火山大爆發後形成的瀑布，寬約 20 公尺，水像一片簾子落下。可以走進瀑布後面的岩洞，從裡面往外看。"}),
- R("10:30–11:00","m","→ 午餐地點","自駕","燒肉正週三公休，今天不能去"),
- R("11:00–12:30","f","午餐（小國～阿蘇一帶）","","備案：あか牛の館、焼肉居酒屋 中島商店","",{tg:[["eat","阿蘇赤牛"]]}),
- R("12:30–13:15","m","→ 大觀峰","自駕：國道 212 號","","大観峰"),
- R("13:15–14:00","s","大觀峰展望所（天氣好才去）","停車場步行約 10 分・免費","24 小時開放，停車免費|風大很冷，起霧看不到就取消","",
+ R("12:00–12:15","m","→ 午餐地點","自駕","燒肉正週三公休，今天不能去"),
+ R("12:15–13:15","f","午餐（小國～阿蘇一帶）","","備案：あか牛の館、焼肉居酒屋 中島商店","",{tg:[["eat","阿蘇赤牛"]]}),
+ R("13:15–13:45","m","→ 大觀峰","自駕：國道 212 號","","大観峰"),
+ R("13:45–14:30","s","大觀峰展望所（天氣好才去）","停車場步行約 10 分・免費","排在一天最暖的時段通過最高點|風大很冷，起霧看不到就取消","",
   {fl:"可取消",st:"阿蘇外輪山的最高點，標高 936 公尺。從這裡看阿蘇五岳的山稜，像一尊躺著的佛像，被稱為「涅槃像」。「大觀峰」這個名字是文人德富蘇峰取的。"}),
- R("14:00–15:30","m","→ 熊本市區","自駕：ミルクロード → 國道 57 號","進熊本市區大津一帶常塞車，可能要 2 小時"),
- R("15:30–16:00","h","飯店 check in、停車","","飯店要有停車場（2/11、2/12 都要開車）"),
- R("16:00–18:00","h","休息"),
- R("18:00–20:00","f","晚餐（熊本市區）","步行／市電","店家現場挑")
- ],
- alts:[{label:"下雪備案",snow:1,text:"搭九州橫斷巴士 黑川 → 熊本（需預約），鍋ヶ滝、大觀峰取消。只在前一天也改搭巴士時適用。"}]},
-{n:10,d:"2/11",w:"四",tag:"日本假日",r:"阿蘇",wx:"aso",mode:"driving",bed:"熊本（待訂）",
- gather:["07:30","熊本出發，自駕去草千里（假日早出發避開塞車）"],
- rows:[
- R("07:30–09:00","m","熊本 → 草千里","自駕：國道 57 號 → 阿蘇パノラマライン（縣道 111 號）","結冰或下雪時縣道 111 號可能封閉，出發前查阿蘇市道路資訊","草千里ヶ浜"),
- R("09:00–10:00","s","草千里、阿蘇火山博物館","停車場就在旁邊・博物館大人 ¥1,100","博物館 9:00–17:00（最後入館 16:30）|中岳火口：噴火警戒等級 2，火口周邊約 1 公里禁入，當天查氣象廳|時間不夠就只逛草千里","阿蘇火山博物館",
-  {tg:[["buy","阿蘇キャラメルサンド（新草千里）"]],st:"草千里是烏帽子岳北麓的古火山口，一大片草原中間有雨水積成的池塘。整個阿蘇破火山口東西約 18 公里、南北約 25 公里，是世界最大級的火山口之一，裡面住了約 5 萬人。"}),
- R("10:00–11:00","m","→ 燒肉正（產山村）","自駕：下山 → 國道 57 號 → 產山村","","焼肉 正 産山村"),
- R("11:00–12:30","f","午餐：燒肉正","約 ¥2,000～3,000／人","2/11 是假日有營業（平常週三、週四公休）|10:30 開門，假日會排隊|出發前先打電話確認 0967-25-2983|備案：あか牛の館、焼肉居酒屋 中島商店","",
-  {tg:[["eat","阿蘇赤牛燒肉"],["menu","あか牛 燒肉"]],st:"阿蘇的「あか牛」是褐毛和種，在高原上放牧長大，瘦肉多、油花少，味道比霜降和牛清爽。"}),
- R("12:30–13:00","m","→ 阿蘇神社","自駕","神社附近有停車場","阿蘇神社"),
- R("13:00–15:00","s","阿蘇神社＋門前町商店街","步行","商店街多數 17:00 前關|地震後正常參拜、商店街正常營業","",
+ R("14:30–15:00","m","大觀峰 → 阿蘇神社","自駕：ミルクロード下山到阿蘇市一宮","","阿蘇神社"),
+ R("15:00–16:00","s","阿蘇神社＋門前町商店街","步行","商店街多數 17:00 前關|順便買晚餐、明天早餐","阿蘇神社",
   {tg:[["eat","MERUKORO 麵包（9:00–17:00）"]],st:"全國約 450 座阿蘇神社的總本社，相傳已有 2,000 多年歷史。日本三大樓門之一的「樓門」在 2016 年熊本地震倒塌，2023 年修復完成。門前町沿路有很多「水基」湧泉，還能抽「水籤詩」，放進水裡字才會浮現。"}),
- R("15:00–16:30","m","→ 熊本市區","自駕：國道 57 號","假日回程大津一帶塞車，可能要 2 小時"),
- R("16:30–18:00","h","回飯店休息"),
- R("18:00–20:00","f","晚餐（熊本市區）","步行／市電","店家現場挑")
+ R("16:00–16:15","m","→ 奥阿蘇のあかまつ","自駕","","熊本県阿蘇市一宮町酒梨832-1"),
+ R("16:15–","h","奥阿蘇のあかまつ 入住、休息","","Airbnb，自助入住 16:00–18:00，退房 10:00|要事先填旅人名單、上傳護照"),
+ R("18:00–19:30","f","晚餐（住宿附近或門前町買的）","","阿蘇晚上店家早關，晚餐先買好")
  ],
- alts:[{label:"下雪備案",snow:1,text:"草千里取消，只去阿蘇神社＋燒肉正（平地道路）。大雪就整天不開車，改去熊本市區，和 2/13 互換。"}]},
-{n:11,d:"2/12",w:"五",tag:"看天氣",r:"高千穗（Plan A 當天來回）",wx:"tk",mode:"driving",bed:"熊本（待訂）",
- gather:["06:30","熊本出發，自駕去上色見熊野座神社（Plan B 是 08:00）"],
+ alts:[{label:"下雪備案",snow:1,text:"九州橫斷巴士 黑川 → 阿蘇駅前，再搭 JR 豐肥本線到宮地；鍋ヶ滝、大觀峰取消。詳細看「備案」分頁。"}]},
+{n:10,d:"2/11",w:"四",tag:"日本假日",r:"阿蘇 → 高千穗",wx:"aso",mode:"driving",bed:"高千穗（待訂）",
+ gather:["10:00","退房，自駕去草千里"],
  rows:[
- R("06:30–07:45","m","熊本 → 上色見熊野座神社","自駕：國道 57 號 → 南阿蘇 → 國道 325 號 → 高森","天亮約 06:40、日出 07:04，前半段天還暗|清晨山路可能結冰，慢開","上色見熊野座神社"),
- R("07:45–08:45","s","上色見熊野座神社（優先，不取消）","停車場 → 鳥居 → 石階上山約 15 分・免費","24 小時開放；森林內偏暗，8 點後光線較好|石階濕滑，穿好走的鞋|鳥居對面郵局旁有停車場，不要停郵局停車場","",
+ R("08:00–10:00","h","早餐、退房","","早餐吃前一天在門前町買的"),
+ R("10:00–10:40","m","阿蘇一宮 → 草千里","自駕：阿蘇パノラマライン（縣道 111 號）","結冰或下雪時縣道 111 號可能封閉，出發前查阿蘇市道路資訊","草千里ヶ浜"),
+ R("10:40–12:40","s","草千里、阿蘇火山博物館","停車場就在旁邊・博物館大人 ¥1,100","博物館 9:00–17:00（最後入館 16:30）|中岳火口：噴火警戒等級 2，火口周邊約 1 公里禁入，當天查氣象廳|時間不夠就只逛草千里","阿蘇火山博物館",
+  {tg:[["buy","阿蘇キャラメルサンド（新草千里）"]],st:"草千里是烏帽子岳北麓的古火山口，一大片草原中間有雨水積成的池塘。整個阿蘇破火山口東西約 18 公里、南北約 25 公里，是世界最大級的火山口之一，裡面住了約 5 萬人。"}),
+ R("12:40–13:15","m","→ 南阿蘇～高森","自駕","","高森町"),
+ R("13:15–14:15","f","午餐（南阿蘇～高森一帶）","","店家待選","",{tg:[["eat","阿蘇赤牛"]]}),
+ R("14:15–14:30","m","→ 上色見熊野座神社","自駕","鳥居對面郵局旁有停車場，不要停郵局停車場","上色見熊野座神社"),
+ R("14:30–15:30","s","上色見熊野座神社","石階上山約 15 分・免費","石階濕滑，穿好走的鞋","",
   {st:"一整排石燈籠沿著長滿青苔的石階排上山，像通往另一個世界，被認為是動畫《螢火之森》的取景印象地。神社後方的「穿戶岩」是一個巨大的岩洞，傳說是鬼八法師一腳踢破的，被當成「突破難關」的象徵。"}),
- R("08:45–09:45","m","上色見 → 高千穗峽","自駕：國道 325 號（高森峠，冬天易結冰）","停御塩井停車場（最靠近划船處，假日很早滿）；滿了停上方停車場，走下來約 15～20 分","高千穂峡 御塩井駐車場"),
- R("10:00–12:00","s","高千穗峽（真名井瀑布、划船）","遊步道約 30 分／划船約 30 分・約 ¥4,100～5,000／艇，4 人要租 2 艘","划船 8:30–17:00（最後受理 16:30），2 月有開|預約時間前 20～30 分到場報到|下雨或水位高會停駛|9:45 才抵達，若訂到 10:00 的船要提早離開上色見","",
-  {tg:[["book","划船：台灣時間 1/29（五）08:00 開放網路預約"]],st:"阿蘇火山噴出的熔岩流進五ヶ瀬川後急速冷卻，形成高 80～100 公尺的柱狀節理峭壁。17 公尺高的真名井瀑布是日本瀑布百選之一，划船時可以從瀑布正下方仰望。"}),
- R("12:00–13:30","f","午餐：高千穗","自駕（市區約 5～10 分）","店家現場挑"),
- R("13:30–15:30","s","高千穗神社 → 天岩戶神社＋天安河原","自駕：高千穗神社 → 天岩戶約 15 分；天岩戶 → 天安河原步行約 10 分","取消順序：天岩戶先取消，高千穗神社盡量保留|天岩戶神社授与所約 8:30–17:00|15:30 一定要開始回程，時間到就走","高千穂神社",
-  {fl:"天岩戶可取消",st:"神話裡，天照大神因為弟弟作亂而躲進岩洞，世界陷入一片黑暗，眾神就聚在天安河原開會想辦法。現在河原的洞窟裡，堆滿了參拜者疊的小石塔。"}),
- R("15:30–19:00","m","高千穗 → 熊本、還車（目標 18:30～19:00 前）","自駕：國道 325 號 → 國道 57 號 → 熊本","最晚 19:00 前還車，多數租車店約 19:00～20:00 打烊，沒有夜間還車|日落 17:59，後半段是夜間山路，小心結冰|還車前加滿油，之後在熊本市區搭市電|跑不完就先縮減行程，安全比景點重要")
+ R("15:30–16:30","m","上色見 → 高千穗","自駕：國道 325 號高森峠","排在下午最暖的時段通過高森峠，冬天容易結冰|16:30 前到高千穗","高千穂神社"),
+ R("16:30–17:00","s","高千穗神社","步行","被大杉樹圍繞的神社；晚上的夜神樂也在這裡","高千穂神社",
+  {st:"高千穗八十八社的總社。每晚 20:00 在神樂殿演出的「高千穗神樂」，是從 33 番夜神樂中挑出最有名的 4 番，包括天照大神躲進岩戶的故事。"}),
+ R("17:00–17:30","h","高千穗住宿 check in","","住宿待訂：要可免費取消、走路到得了高千穗神社"),
+ R("18:00–19:30","f","晚餐：高千穗","","店家待選"),
+ R("20:00–21:00","s","高千穗夜神樂","高千穗神社神樂殿・約 ¥1,000／人，現場買票","提早 20～30 分到場占位|神社 TEL 0982-72-2413","高千穂神社 神楽殿")
  ],
- alts:[
- {label:"下雪備案",snow:1,text:"高千穗延到 2/13，今天先去熊本城（和 Day 12 互換）。國道 325 號高森峠結冰或封閉就不去；兩天都下雪就取消高千穗，留在熊本市區。2/12 下雨也可以和 2/13 互換（還車改到 2/13）。"},
- {label:"Plan B：高千穗拆兩天（住高千穗一晚）",text:"會用掉備用日，熊本城等移到 Day 13。大行李寄放熊本飯店，只帶一晚的小包。",rows:[
-  R("08:00","m","熊本 → 上色見熊野座神社","自駕約 1 小時 15 分：國道 57 號 → 南阿蘇 → 國道 325 號","","上色見熊野座神社"),
-  R("09:15–10:15","s","上色見熊野座神社（優先，不取消）","步行","石階濕滑，穿好走的鞋|優先順序：上色見 > 高千穗神社 > 天岩戶神社"),
-  R("10:15–11:15","m","上色見 → 高千穗","自駕","","高千穂神社"),
-  R("11:15–12:30","f","午餐：高千穗","","店家現場挑"),
-  R("12:30–13:30","s","高千穗神社","自駕（市區約 5 分）","被大杉樹圍繞的神社；晚上的夜神樂也在這裡","高千穂神社",
-   {st:"高千穗八十八社的總社。每晚 20:00 在神樂殿演出的「高千穗神樂」，是從 33 番夜神樂中挑出最有名的 4 番，包括天照大神躲進岩戶的故事。"}),
-  R("13:45–15:15","s","天岩戶神社＋天安河原","自駕約 15 分；天岩戶 → 天安河原步行約 10 分","授与所約 8:30–17:00","天岩戸神社",{fl:"可取消"}),
-  R("16:00","h","入住高千穗旅館","","含晚餐方案較方便"),
-  R("20:00–21:00","s","高千穗夜神樂","高千穗神社神樂殿・約 ¥1,000／人，現場買票","提早 20～30 分到場占位|神社 TEL 0982-72-2413","高千穂神社 神楽殿")
- ]}
+ alts:[{label:"下雪備案",snow:1,text:"草千里、上色見、高千穗取消，上午搭 JR 宮地 → 熊本，下午改去熊本城。詳細看「備案」分頁。"}]},
+{n:11,d:"2/12",w:"五",r:"高千穗 → 熊本",wx:"tk",mode:"driving",bed:"熊本（待訂）",
+ gather:["08:30","退房，自駕到高千穗峽"],
+ rows:[
+ R("07:30–08:30","h","早餐、退房"),
+ R("08:30–08:45","m","→ 高千穗峽","自駕，停御塩井停車場（最靠近划船處）","假日很早滿；滿了停上方停車場，走下來約 15～20 分","高千穂峡 御塩井駐車場"),
+ R("09:00–10:30","s","高千穗峽划船＋真名井瀑布","約 ¥4,100～5,000／艇，每艘最多 3 人，4 人要租 2 艘","划船 8:30–17:00（最後受理 16:30），2 月有開|預約時間前 20～30 分到場報到|下雨或水位高會停駛","",
+  {tg:[["book","划船：台灣時間 1/29（五）08:00 開放網路預約"]],st:"阿蘇火山噴出的熔岩流進五ヶ瀬川後急速冷卻，形成高 80～100 公尺的柱狀節理峭壁。17 公尺高的真名井瀑布是日本瀑布百選之一，划船時可以從瀑布正下方仰望。"}),
+ R("10:40–10:55","m","→ 天岩戶神社","自駕約 15 分","","天岩戸神社"),
+ R("10:55–11:55","s","天岩戶神社＋天安河原","天岩戶 → 天安河原步行約 10 分","授与所約 8:30–17:00","天岩戸神社",
+  {fl:"可取消",st:"神話裡，天照大神因為弟弟作亂而躲進岩洞，世界陷入一片黑暗，眾神就聚在天安河原開會想辦法。現在河原的洞窟裡，堆滿了參拜者疊的小石塔。"}),
+ R("12:00–12:55","f","午餐：高千穗","","店家現場挑"),
+ R("13:00–15:50","m","高千穗 → 熊本","自駕約 2.5～3 小時：國道 325 號 → 國道 57 號","13:00 一定要出發，趁白天開完山路|跑不完就先縮減行程，安全比景點重要"),
+ R("15:50–16:15","h","熊本飯店 先放行李","","飯店待訂"),
+ R("16:15–16:45","m","還車（16:30）","","還車前加滿油|之後在熊本市區搭市電"),
+ R("18:00–19:30","f","晚餐（熊本市區）","步行／市電","店家待選")
  ]},
 {n:12,d:"2/13",w:"六",r:"熊本市區",wx:"km",mode:"transit",bed:"熊本（待訂）",
  gather:["08:30","飯店出發，搭市電去熊本城"],
@@ -603,16 +738,7 @@ const DAYS=[
  R("17:30–19:00","f","晚餐：熊本拉麵 黑亭 櫻町熊本城前店","市電「花畑町」或「辛島町」再步行","備案：相撲寿司 大砲部屋","黒亭 桜町熊本城前店",
   {tg:[["eat","熊本拉麵"],["menu","玉子入りラーメン（兩顆生蛋黃）"]],st:"熊本拉麵的特色是濃厚豬骨湯加上焦香的蒜油（マー油）。黑亭 1957 年創業，招牌是放了兩顆生蛋黃的拉麵。"}),
  R("19:00–19:30","m","回飯店","市電／步行")
- ],
- alts:[{label:"Plan B：高千穗第二天 → 回熊本",text:"熊本城、城彩苑、勝烈亭移到 Day 13，水前寺取消。這個方案沒有備用日。",rows:[
-  R("08:00–08:45","h","早餐、退房"),
-  R("09:00–10:30","s","高千穗峽划船","自駕（停御塩井停車場）・約 ¥4,100～5,000／艇，每艘最多 3 人","住當地可以一開放就去，人最少|水位高或下雨會停駛","高千穂峡 御塩井駐車場",{tg:[["book","划船：台灣時間 1/30（六）08:00 開放，約 20 分鐘賣完"]]}),
-  R("10:30–11:30","s","真名井瀑布＋峽谷遊步道","步行","划船時看得到，也可以沿步道散步拍照"),
-  R("11:30–12:30","f","午餐：高千穗","","店家現場挑"),
-  R("12:30–14:30","m","高千穗 → 熊本","自駕約 2 小時"),
-  R("15:00–16:00","m","還車","","還車前加滿油，之後在熊本市區搭市電"),
-  R("17:30–19:00","f","晚餐：熊本拉麵 黑亭 櫻町熊本城前店","市電","備案：相撲寿司 大砲部屋","黒亭 桜町熊本城前店")
- ]}]},
+ ]},
 {n:13,d:"2/14",w:"日",r:"熊本市區採購",wx:"km",mode:"transit",bed:"熊本（待訂）",
  gather:["08:30","搭市電 A 線到熊本駅前吃早餐"],
  rows:[
@@ -627,14 +753,7 @@ const DAYS=[
  R("18:30–20:30","f","晚餐：大衆馬肉酒場 三村 熊本銀座通り店","步行","","大衆馬肉酒場 三村 熊本銀座通り店",
   {tg:[["eat","馬刺し 馬肉生魚片"],["menu","馬肉壽喜燒、特級菲力馬肉、馬舌"],["book","春節假期建議訂位"]],st:"熊本是日本吃馬肉最有名的地方。馬刺し沾甜醬油，配薑泥、蒜片一起吃，是熊本人宴客的招牌菜。"}),
  R("","h","回飯店整理行李","市電／步行","注意託運行李重量（去程每人 20kg，回程星宇請確認限重）")
- ],
- alts:[{label:"Plan B：熊本城＋採購（熊本城從 Day 12 移過來）",text:"Tarachine 早餐、肥後よかモン市場、AMU PLAZA、SAKURA MACHI 排不下；伴手禮可以在熊本機場國內線補買。",rows:[
-  R("09:00–11:30","s","熊本城","市電","週末人多，開門就到","熊本城"),
-  R("11:30–13:00","f","午餐：勝烈亭","步行・約 ¥3,000～4,500／人","","勝烈亭 新市街本店",{tg:[["menu","六白黑豚炸豬排"]]}),
-  R("13:00–14:30","b","櫻之馬場城彩苑","步行","香梅庵、天草海食、菅乃屋、高田蒲鉾","桜の馬場 城彩苑"),
-  R("15:00–18:30","b","上通、下通商店街＋熊本熊廣場","步行","","下通商店街"),
-  R("18:30–20:30","f","晚餐：大衆馬肉酒場 三村","步行","春節假期建議訂位","大衆馬肉酒場 三村 熊本銀座通り店")
- ]}]},
+ ]},
 {n:14,d:"2/15",w:"一",r:"熊本 → 回台灣",wx:"km",mode:"transit",bed:"",
  gather:["08:00","熊本櫻町巴士總站搭機場巴士；09:15 機場報到"],
  rows:[
@@ -657,14 +776,17 @@ const STAYS=[
   kv:[["房型","整棟雙臥室 Villa，4 位"],["餐","不含餐（晚餐、早餐要自己安排）"],["設備","免費 WiFi"],["地址","大分縣由布市湯布院町川上 1623"]],
   nt:["可在由布院站代收行李：前一天前聯絡住宿，告知件數、大小、抵達時間","不接受聚會、派對，請保持安靜"],mp:"大分県由布市湯布院町川上1623"},
  {ar:"別府",n:2,nm:"別府站附近飯店",st:"wait",ci:"2/7（日）",co:"2/9（二）",
-  nt:["建議訂在別府站附近，去地獄、竹瓦溫泉、取車都方便","2/7 10:30 先寄放行李，17:15 check in"]},
+  nt:["建議訂在別府站附近，去地獄、纜車、取車都方便","2/7 10:30 先寄放行李，17:15 check in"]},
  {ar:"黑川溫泉",n:1,nm:"旅館 やまの湯",st:"ok",ci:"2/9（二）預定 16:00",co:"2/10（三）10:00 前",
   kv:[["房間","川側和室 14 畳，1 房 4 位"],["餐","1 泊 2 食（晚餐＋早餐）"],["地址","熊本縣阿蘇郡南小國町満願寺 6601-4"],["電話","0967-44-0017（8:00–21:00）"]],
-  nt:["自駕前往，晚到請事先聯絡旅館"],mp:"旅館 やまの湯 黒川温泉"},
- {ar:"熊本",n:5,nm:"熊本市區飯店",st:"wait",ci:"2/10（三）",co:"2/15（一）",
-  nt:["要有停車場（2/11、2/12 都要開車）","2/15 08:00 從熊本櫻町巴士總站搭機場巴士"]},
- {ar:"高千穗",n:1,nm:"高千穗旅館（Plan B 才住）",st:"alt",ci:"2/12（五）16:00",co:"2/13（六）",
-  nt:["大行李寄放熊本飯店，只帶一晚的小包","含晚餐方案較方便；20:00 有夜神樂"]}
+  nt:["自駕前往，晚到請事先聯絡旅館","停車、寄放行李、囲炉裏会席已向旅館提出，等回覆"],mp:"旅館 やまの湯 黒川温泉"},
+ {ar:"阿蘇（一宮）",n:1,nm:"奥阿蘇のあかまつ（Airbnb）",st:"ok",ci:"2/10（三）16:00～18:00",co:"2/11（四）10:00",
+  kv:[["入住","自助入住"],["位置","阿蘇神社附近"],["地址","熊本縣阿蘇市一宮町酒梨 832-1"]],
+  nt:["要事先填旅人名單、上傳護照","阿蘇晚上店家早關，晚餐和早餐在門前町先買好"],mp:"熊本県阿蘇市一宮町酒梨832-1"},
+ {ar:"高千穗",n:1,nm:"高千穗旅館",st:"wait",ci:"2/11（四）17:00",co:"2/12（五）",
+  nt:["一定訂「可免費取消」（極端天氣備案會用到）","要走路到得了高千穗神社；20:00 有夜神樂"]},
+ {ar:"熊本",n:3,nm:"熊本市區飯店",st:"wait",ci:"2/12（五）",co:"2/15（一）",
+  nt:["2/12 15:50 先放行李再去還車，要能短暫停車","2/15 08:00 從熊本櫻町巴士總站搭機場巴士","極端天氣備案要多住 2/11 一晚，另訂一晚可免費取消的房"]}
 ];
 
 /* ---------- 緊急電話 ---------- */
@@ -689,15 +811,17 @@ const EST=[
  ["2/4","巴士「旅人」太宰府 → 博多",700,700],
  ["2/5","JR 由布院之森",5190,6130],
  ["2/7","巴士 由布院 → 別府",1000,1000],
- ["2/7","巴士 別府站 → 鐵輪",400,400],
+ ["2/7","巴士 別府站 → 鐵輪 → 明礬 → 別府站",1000,1200],
  ["2/7","地獄共通觀覽券",2200,2200],
- ["2/8","巴士（纜車、明礬、鐵輪）",800,800],
- ["2/8","鶴見岳纜車來回",1800,1800],
- ["2/8","竹瓦溫泉",300,1500],
+ ["2/8","36 系統巴士 來回纜車",800,800],
+ ["2/8","鶴見岳纜車來回",1600,1800],
+ ["2/8","JR 別府 ↔ 亀川 來回",400,400],
+ ["2/8","竹瓦溫泉（只拍照免費，想泡 ¥300）",0,300],
  ["2/9","九重夢大吊橋",500,500],
  ["2/9","入湯手形",1300,1300],
  ["2/10","鍋ヶ滝",300,300],
  ["2/11","阿蘇火山博物館",1100,1100],
+ ["2/11","高千穗夜神樂",1000,1000],
  ["2/12","高千穗峽划船（2 艘分攤）",2050,2500],
  ["2/13","熊本城＋水前寺成趣園",1300,1300],
  ["2/13","市電約 6 趟",1080,1080],
@@ -707,7 +831,7 @@ const EST=[
 /* ---------- 伴手禮（購物清單待匯入；先列行程中提到的） ---------- */
 const GIFT_REG=[
  {k:"fk",nm:"福岡",sub:"2/2～2/5"},
- {k:"km",nm:"熊本",sub:"2/10～2/15"},
+ {k:"km",nm:"熊本・阿蘇",sub:"2/10～2/15"},
  {k:"any",nm:"超市・超商・藥妝",sub:"哪個城市都買得到"},
  {k:"tbd",nm:"地點還沒確定",sub:""}
 ];
@@ -758,10 +882,10 @@ function renderStrip(){
  let h="";
  DAYS.forEach(d=>{
   if(d.n===1)h+=`<span class="grp">福岡・由布院・別府</span>`;
-  if(d.n===8)h+=`<span class="grp">黑川・阿蘇・熊本</span>`;
+  if(d.n===8)h+=`<span class="grp">黑川・阿蘇・高千穗・熊本</span>`;
   h+=`<button type="button" class="dchip${d.n===tripDay?" today":""}" data-day="${d.n}" aria-current="${d.n===cur}"><small>DAY ${d.n}</small><b>${esc(d.d)}</b><span>週${esc(d.w)}</span>${d.tag?`<i>${esc(d.tag)}</i>`:""}</button>`;
  });
- $("strip").innerHTML=h;
+ $("strip").innerHTML=`<span class="dillo" id="dillo" role="img"></span>`+h;
 }
 function timeHtml(t){
  if(!t)return `<div class="tm"></div>`;
@@ -774,7 +898,7 @@ function rowHtml(r,mode){
  const nav=r.mp?`<div class="acts"><a class="nav${mode==="driving"?" drive":""}" href="${navUrl(r.mp,mode)}" target="_blank" rel="noopener">${IC.nav}導航</a></div>`:"";
  return `<li class="rw ${slim?"slim":"card"} ${r.k}">${timeHtml(r.t)}<div class="bd">
   <div class="kd">${IC[r.k]}${TYPES[r.k]}</div>
-  <div class="ti">${esc(r.ti)}${r.fl?`<span class="fl">${esc(r.fl)}</span>`:""}</div>
+  <div class="ti">${esc(r.ti)}${r.fl?`<span class="fl">${esc(r.fl)}</span>`:""}${r.edited||r.custom?`<span class="fl ed">已調整</span>`:""}${r._warn?`<span class="fl warn">時間重疊</span>`:""}</div>
   ${r.how?`<div class="how">${esc(r.how)}</div>`:""}
   ${r.nt.length?`<ul class="nt">${r.nt.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:""}
   ${tags?`<div class="tgs">${tags}</div>`:""}
@@ -801,13 +925,18 @@ async function wxLive(n){
   el.innerHTML=`<b>${esc(w.nm)}</b>・${WXC(j.daily.weather_code[i])} <span class="temp hi">${Math.round(j.daily.temperature_2m_max[i])}°</span> / <span class="temp lo">${Math.round(j.daily.temperature_2m_min[i])}°</span>・降雨 ${j.daily.precipitation_probability_max[i]??"-"}%<br><span style="color:var(--sub)">即時預報（Open-Meteo）</span>`;
  }catch(_){}
 }
-function renderDay(){setTimeout(()=>wxLive(cur),0);
- const d=DAYS[cur-1];
+function renderDay(){
+ const tool=`<div class="vtool"><div class="vseg" role="group" aria-label="檢視方式"><button type="button" data-view="day" aria-pressed="${VIEW==="day"}">單日</button><button type="button" data-view="week" aria-pressed="${VIEW==="week"}">週曆</button></div><span style="flex:1"></span><button type="button" class="ibtn" id="undoBtn" ${undoStack.length?"":"disabled"}>↶ 復原</button><button type="button" class="ibtn add" id="addBtn">＋ 新增</button></div>`;
+ document.body.classList.toggle("wk-mode",VIEW==="week");
+ if(VIEW==="week"){$("day").innerHTML=tool+weekHtml();return}
+ setTimeout(()=>wxLive(cur),0);
+ const d=DAYS[cur-1];const rows=rowsOf(cur);
+ const stops=[...new Set(rows.filter(r=>r.k!=="m"&&r.mp).map(r=>r.mp))].slice(0,10);
  const all=[...d.rows,...(d.alts||[]).flatMap(a=>a.rows||[])];
  const hl=[];const seen=new Set();
- d.rows.forEach(r=>(r.tg||[]).forEach(([c,x])=>{if((c==="eat"||c==="buy"||c==="book")&&!seen.has(x)){seen.add(x);hl.push(`<span class="tg ${c}"><b>${TAGN[c]}</b>${esc(x)}</span>`)}}));
+ rows.forEach(r=>(r.tg||[]).forEach(([c,x])=>{if((c==="eat"||c==="buy"||c==="book")&&!seen.has(x)){seen.add(x);hl.push(`<span class="tg ${c}"><b>${TAGN[c]}</b>${esc(x)}</span>`)}}));
  const prev=DAYS[cur-2],next=DAYS[cur];
- $("day").innerHTML=`
+ $("day").innerHTML=tool+`
  <article class="dayhead">
   <div class="dh-top"><span class="dnum">DAY ${d.n}</span><span class="ddate">${esc(d.d)}（${esc(d.w)}）</span>${d.tag?`<span class="dtag">${esc(d.tag)}</span>`:""}</div>
   <h2>${esc(d.r)}</h2>
@@ -815,10 +944,11 @@ function renderDay(){setTimeout(()=>wxLive(cur),0);
   ${wxHtml(d)}
   ${hl.length?`<div class="hl">${hl.join("")}</div>`:""}
   ${d.bed?`<div class="bed">${IC.h}今晚住：${esc(d.bed)}</div>`:`<div class="bed">${IC.plane}今天回台灣</div>`}
+  ${stops.length>1?`<a class="nav daymap${d.mode==="driving"?" drive":""}" href="https://www.google.com/maps/dir/${stops.map(encodeURIComponent).join("/")}" target="_blank" rel="noopener">${IC.nav}整天路線（Google 地圖）</a>`:""}
  </article>
  <div class="sec-t"><h3>今日行程</h3><span>時間為日本時間</span></div>
  <div class="legend"><span><i style="background:var(--sight)"></i>景點</span><span><i style="background:var(--food)"></i>美食</span><span><i style="background:var(--shop)"></i>購物</span><span><i style="background:var(--move)"></i>交通</span><span><i style="background:var(--stay)"></i>住宿・休息</span></div>
- <ol class="tl" style="margin-top:8px">${d.rows.map(r=>rowHtml(r,d.mode)).join("")}</ol>
+ <ol class="tl" style="margin-top:8px">${rows.map(r=>rowHtml(r,d.mode)).join("")}</ol>
  ${d.note?`<p class="note">※ ${esc(d.note)}</p>`:""}
  ${d.shops?`<div class="sec-t"><h3>湯之坪街道小吃清單</h3><span>關門時間</span></div><div class="shops">${d.shops.map(s=>`<div class="shop"><b>${esc(s[0])}</b><span>${esc(s[1])}</span>${s[2]?`<span class="cl">${esc(s[2])}</span>`:""}${s[3]?`<a class="nav" style="justify-self:start;margin-top:4px;padding:4px 10px" href="${navUrl(s[3],"walking")}" target="_blank" rel="noopener">${IC.nav}導航</a>`:""}</div>`).join("")}</div>`:""}
  ${(d.alts||[]).map(a=>`<details class="alt${a.snow?" snow":""}"><summary>${esc(a.label)}</summary><div class="in">${a.text?`<p>${esc(a.text)}</p>`:""}${a.rows?`<ol class="tl">${a.rows.map(r=>rowHtml(r,"driving")).join("")}</ol>`:""}</div></details>`).join("")}
@@ -831,7 +961,7 @@ function goDay(n,scroll){
  if(!(n>=1&&n<=14))return;
  cur=n;store.set("ky-day",n);
  document.querySelectorAll(".dchip").forEach(c=>c.setAttribute("aria-current",+c.dataset.day===n));
- renderDay();
+ renderDay();placeIllo(true);
  const chip=document.querySelector(`.dchip[data-day="${n}"]`);
  if(chip)chip.scrollIntoView({inline:"center",block:"nearest"});
  if(scroll)window.scrollTo(0,0);
@@ -866,7 +996,7 @@ function renderGift(){
  const regs=GIFT_REG.filter(r=>GIFTS.some(g=>g.r===r.k));
  if(giftReg!=="all"&&!regs.some(r=>r.k===giftReg))giftReg="all";
  const fromPlan=[];
- DAYS.forEach(d=>[...d.rows,...(d.alts||[]).flatMap(a=>a.rows||[])].forEach(r=>(r.tg||[]).forEach(([c,x])=>{if(c==="buy")fromPlan.push([d,r,x])})));
+ DAYS.forEach(d=>[...rowsOf(d.n),...(d.alts||[]).flatMap(a=>a.rows||[])].forEach(r=>(r.tg||[]).forEach(([c,x])=>{if(c==="buy")fromPlan.push([d,r,x])})));
  $("p-gift").innerHTML=`
   <div class="ph"><h2>伴手禮推薦</h2><p>共 ${GIFTS.length} 項・價格多為舊資料，以店頭為準</p></div>
   <div class="chips gfil" role="group" aria-label="篩選地區">
@@ -907,8 +1037,8 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-fx]");if(!
 function renderInfo(){
  const estMin=EST.reduce((a,e)=>a+e[2],0),estMax=EST.reduce((a,e)=>a+e[3],0);
  $("p-info").innerHTML=`
-  <div class="ph"><h2>旅行資訊</h2><p>匯率換算、航班、住宿、緊急電話、自駕提醒</p></div>
-  <div class="chips"><a href="#i-fx">日幣換算</a><a href="#i-fly">航班</a><a href="#i-stay">住宿</a><a href="#i-sos">緊急電話</a><a href="#i-car">自駕</a></div>
+  <div class="ph"><h2>旅行資訊</h2><p>匯率換算、航班、住宿、緊急電話、自駕、攜帶用品</p></div>
+  <div class="chips"><a href="#i-fx">日幣換算</a><a href="#i-fly">航班</a><a href="#i-stay">住宿</a><a href="#i-sos">緊急電話</a><a href="#i-car">自駕</a><a href="#i-pack">攜帶用品</a><a href="#i-data">行程資料</a></div>
   <section class="box" id="i-fx"><h3>日幣換算</h3>
    <div class="fx">
     <label class="fxr"><span>¥ 日圓</span><input id="fx-jpy" class="num" inputmode="decimal" placeholder="0" autocomplete="off"></label>
@@ -945,13 +1075,25 @@ function renderInfo(){
   </section>
   <section class="box" id="i-car"><h3>自駕提醒</h3>
    <ul class="nt">
-    <li>2/9 在別府取車，2/12 在熊本還車（Plan B 是 2/13）</li>
+    <li>2/9 早上在別府取車，2/12 16:30 在熊本還車</li>
     <li>帶台灣駕照正本＋日文譯本、護照</li>
-    <li>一定要冬季輪胎（スタッドレス），確認有 ETC 卡</li>
-    <li>沒有夜間還車，最晚 19:00 前還車</li>
-    <li>山區清晨容易結冰：牧ノ戸峠、阿蘇パノラマライン、國道 325 號高森峠</li>
+    <li>一定要冬季輪胎（スタッドレス）</li>
+    <li>走一般道路、不走高速（過路費較貴）：導航設定「一般道路優先」</li>
+    <li>山路排在白天最暖的時段開：牧ノ戸峠、阿蘇パノラマライン、國道 325 號高森峠</li>
+    <li>沒有夜間還車，還車前加滿油</li>
     <li>車上導航可以用 MAPCODE 或電話號碼設定目的地</li>
+    <li>下大雪或道路封閉就改搭巴士＋JR，看「備案」分頁</li>
    </ul>
+  </section>
+  <section class="box" id="i-pack"><h3>攜帶用品</h3>
+   <div id="packbox"><div class="pk-prog"></div>
+    <div class="pk-tool"><input id="pkq" type="search" placeholder="搜尋用品" aria-label="搜尋用品"><div class="vseg" role="group" aria-label="篩選"><button type="button" data-pkf="all" aria-pressed="true">全部</button><button type="button" data-pkf="todo" aria-pressed="false">未完成</button><button type="button" data-pkf="done" aria-pressed="false">已完成</button></div></div>
+    <div class="pk-grid"></div></div>
+   <p class="small">勾選和新增的內容只存在這台裝置。</p>
+  </section>
+  <section class="box" id="i-data"><h3>行程資料</h3>
+   <p class="small">在「週曆」拖曳、調整、新增的行程只存在這台裝置。要搬到別台手機，先匯出 JSON 再匯入。</p>
+   <div class="acts"><button type="button" class="nav" data-dat="ics">${IC.plan}匯出到行事曆（ICS）</button><button type="button" class="nav" style="background:var(--head);color:var(--ink)" data-dat="json">匯出 JSON</button><button type="button" class="nav" style="background:var(--head);color:var(--ink)" data-dat="import">匯入 JSON</button><button type="button" class="nav" style="background:var(--head);color:var(--t-eat)" data-dat="reset">還原原始行程</button></div>
   </section>`;
 }
 document.addEventListener("click",e=>{
@@ -977,11 +1119,11 @@ const ORDERS=[
   {nm:"博多華味鳥（水炊き）",day:"Day 1",items:[
    {jp:"水炊きを{n}人前お願いします。",zh:"水炊（雞肉火鍋）{n} 人份"},
    {jp:"最後は雑炊でお願いします。",zh:"最後收尾做雜炊（粥）"}]},
-  {nm:"元祖もつ鍋 楽天地（牛腸鍋）",day:"Day 3",items:[
+  {nm:"元祖もつ鍋 楽天地（牛腸鍋）",day:"Day 2",items:[
    {jp:"もつ鍋を{n}人前お願いします。",zh:"牛腸鍋 {n} 人份"},
    {jp:"辛さ控えめでお願いします。",zh:"辣度調低一點"},
    {jp:"締めはちゃんぽん麺でお願いします。",zh:"收尾加強棒麵"}]},
-  {nm:"にく屋 肉いち（燒肉）",day:"Day 4",items:[
+  {nm:"にく屋 肉いち（燒肉）",day:"Day 3",items:[
    {jp:"黒毛和牛の盛り合わせをお願いします。",zh:"黑毛和牛拼盤"},
    {jp:"タレと塩、半分ずつでお願いします。",zh:"醬汁和鹽味各一半"}]}
  ]},
@@ -989,19 +1131,19 @@ const ORDERS=[
   {nm:"由布釜飯 心",day:"Day 5",items:[
    {jp:"豊後牛の釜飯をお願いします。",zh:"豐後牛釜飯"},
    {jp:"地鶏の釜飯をお願いします。",zh:"地雞釜飯"}]},
-  {nm:"地獄蒸し工房 鉄輪",day:"Day 7",items:[
+  {nm:"地獄蒸し工房 鉄輪",day:"Day 6",items:[
    {jp:"地獄蒸しのセットを{n}人分お願いします。",zh:"地獄蒸套餐 {n} 人份"},
    {jp:"蒸し方を教えてください。",zh:"請教我們怎麼蒸"}]}
  ]},
  {k:"km",nm:"熊本",list:[
-  {nm:"勝烈亭（炸豬排）",day:"Day 11・13",items:[
+  {nm:"勝烈亭（炸豬排）",day:"Day 12",items:[
    {jp:"六白黒豚のロースかつ定食をお願いします。",zh:"六白黑豚里肌炸豬排定食"},
    {jp:"大海老フライを追加でお願いします。",zh:"加點大炸蝦"},
    {jp:"ご飯は少なめでお願いします。",zh:"白飯少一點"}]},
-  {nm:"熊本拉麵 黑亭",day:"Day 11・12",items:[
+  {nm:"熊本拉麵 黑亭",day:"Day 12",items:[
    {jp:"玉子入りラーメンをお願いします。",zh:"加蛋黃的招牌拉麵"},
    {jp:"麺はかためでお願いします。",zh:"麵硬一點"}]},
-  {nm:"大衆馬肉酒場 三村（馬肉）",day:"Day 13・14",items:[
+  {nm:"大衆馬肉酒場 三村（馬肉）",day:"Day 13",items:[
    {jp:"馬刺しの盛り合わせをお願いします。",zh:"馬肉生魚片拼盤"},
    {jp:"生ではなく、焼いた料理もありますか？",zh:"有沒有煮熟的馬肉料理？"}]}
  ]},
@@ -1042,20 +1184,372 @@ document.addEventListener("click",e=>{
 $("os").addEventListener("click",()=>{$("os").hidden=true});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")$("os").hidden=true});
 
+/* ---------- 插圖（原創線條幾何風：日期列 40×30、品牌 251×66） ---------- */
+const ILLO=(()=>{
+ const wrap=(b,l)=>`<svg viewBox="0 0 40 30" class="illo" role="img" aria-label="${l}"><title>${l}</title><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter" stroke-linecap="square">${b}</g></svg>`;
+ const plane='<path class="f-a4" d="M5 15 L29 15 L35 13.5 L36.5 15.5 L33 17.5 L7 17.5 Z"/><path d="M15 15 L21 8 L24 8 L21.5 15"/><path d="M17 17.5 L22 22.5 L25 22.5 L23 17.5"/><path d="M7 15 L4 10.5 L7 10.5 L10.5 15"/>';
+ const I={
+  planeRail:["飛機與新幹線",`<g transform="translate(5 -4) scale(.8)">${plane}</g><path d="M2 27 H24 Q33 27 37 23 L31 20.5 H2"/><path class="f-br" d="M2 23.5 H32 L33.5 24.5 H2 Z" stroke="none"/>`],
+  plane:["起飛的飛機",`<g transform="rotate(-14 20 15)">${plane}</g><path class="brass-s" d="M3 27 H12 M17 27 H24 M29 27 H33"/>`],
+  tower:["海邊的高塔",'<circle class="f-a1" cx="31" cy="21" r="4.5"/><path d="M17 27 L19 4 H21 L23 27"/><path d="M18.4 9 H21.6 V13 H18.4 Z"/><path d="M20 4 V1"/><path d="M18.7 18 H21.3 M18.2 23 H21.8"/><path class="brass-s" d="M2 27 H38"/>'],
+  torii:["鳥居與梅枝",'<path class="f-a2" d="M4 7 Q20 3 36 7 L35 9.5 Q20 6 5 9.5 Z"/><path d="M8 13 H32"/><path d="M11 8.5 V28 M29 8.5 V28"/><path d="M20 8 V13"/><path d="M1 18 L5 21 L4 25"/><circle cx="5" cy="21" r="1"/><circle cx="2.5" cy="24.5" r="1"/>'],
+  train:["觀光列車",'<path class="f-a4" d="M3 10 H32 Q37 10 37 15 V23 H3 Z"/><path d="M6 13.5 H11 V17.5 H6 Z M14 13.5 H19 V17.5 H14 Z M22 13.5 H27 V17.5 H22 Z M30 13.5 H34"/><path class="brass-s" d="M4 20.5 H36"/><circle cx="10" cy="25.5" r="2"/><circle cx="29" cy="25.5" r="2"/><path d="M1 28.5 H39"/>'],
+  lake:["湖面與晨霧",'<path d="M2 18 L11 8 L17 13 L24 6 L38 18"/><path class="f-a3" d="M4 21 H36 L32 26.5 H8 Z"/><path class="brass-s" d="M5 13.5 H8 M11 13.5 H14 M23 11 H26 M29 11 H33"/>'],
+  hell:["冒蒸氣的溫泉池",'<path class="f-a3" d="M4 23 Q20 17 36 23 Q20 29 4 23 Z"/><path d="M1 26 L5 22 M35 22 L39 26"/><path d="M13 17 Q11 14 13 11 Q15 8 13 5 M20 16 Q18 13 20 10 Q22 7 20 4 M27 17 Q25 14 27 11 Q29 8 27 5"/>'],
+  ropeway:["纜車與山稜",'<path d="M1 29 L10 22 L16 25 L26 16 L39 26"/><path d="M2 4 L38 16"/><path d="M20 10 V13"/><path class="f-a1" d="M15 13 H25 L24 21 H16 Z"/><path d="M17 16 H23"/>'],
+  bridge:["山谷吊橋",'<path d="M8 5 V24 M32 5 V24"/><path d="M2 9 L8 5 Q20 21 32 5 L38 9"/><path d="M14 9.5 V17 M20 12.5 V17 M26 9.5 V17"/><path class="f-a4" d="M2 17 H38 V19.5 H2 Z"/><path d="M2 28 L10 24 M30 24 L38 28"/>'],
+  waterfall:["簾幕瀑布",'<path d="M3 6 H37"/><path class="f-a3" d="M12 6 H28 V22 H12 Z"/><path d="M16 9 V20 M20 9 V20 M24 9 V20"/><path d="M6 26 H34"/><path d="M9 22.5 L11 24.5 M31 22.5 L29 24.5"/>'],
+  volcano:["火山口與草原",'<path class="f-a1" d="M6 24 L15 9 H25 L34 24 Z"/><path d="M15 9 L18 11 H22 L25 9"/><path d="M19 6.5 Q16 4 19 1.5 M23 6.5 Q26 4 24 1"/><path d="M1 27 H39"/><path d="M4 24.5 L5 22.5 M36 24.5 L35 22.5"/>'],
+  gorge:["峽谷裡的小船",'<path d="M2 2 V28 H10 L12 18 L9 10 L11 2"/><path d="M38 2 V28 H30 L28 18 L31 10 L29 2"/><path class="brass-s" d="M28.5 6 V9 M28.5 12 V15"/><path class="f-a1" d="M15 20 H25 L23 23 H17 Z"/><path d="M12 25.5 H17 M21 25.5 H28"/>'],
+  castle:["城郭天守與石牆",'<path d="M5 28 L9 19 H31 L35 28 Z"/><path d="M11 24 H29"/><path d="M10 19 V15 H30 V19"/><path class="f-br" d="M7 15 L12 12 H28 L33 15 Z"/><path d="M13 12 V8 H27 V12"/><path d="M11 8 L15 5.5 H25 L29 8 Z"/><path d="M17 5.5 V3 H23 V5.5"/><path d="M15 3 L20 1 L25 3"/>'],
+  bag:["購物袋",'<path class="f-a2" d="M9 11 H31 L33 28 H7 Z"/><path d="M14 11 V8 Q14 4 20 4 Q26 4 26 8 V11"/><path d="M16 17 H24"/>'],
+  stay:["住宿",'<path d="M4 14 L20 4 L36 14"/><path class="f-a3" d="M8 13 V27 H32 V13"/><path d="M17 27 V20 H23 V27"/>']
+ };
+ const RULES=[["ropeway",/纜車/],["gorge",/峽|划船/],["volcano",/火山|草千里/],["castle",/熊本城|天守/],["hell",/地獄/],["bridge",/吊橋/],["waterfall",/滝|瀑布/],["torii",/天滿宮|鳥居/],["train",/由布院之森|觀光列車/],["lake",/湖/],["tower",/福岡塔/],["bag",/採購|購物/]];
+ function pick(d,rows){
+  const text=[d.r,...rows.map(r=>r.ti+" "+(r.how||""))].join("｜");
+  if(/虎航|星宇|IT766|JX847/.test(text))return /新幹線/.test(text)?"planeRail":"plane";
+  for(const [k,re] of RULES)if(re.test(text))return k;
+  return "stay";
+ }
+ const brand=()=>`<svg viewBox="0 0 251 66" class="illo" role="img" aria-label="熊本城、阿蘇火山、列車與溫泉"><title>九州</title><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter" stroke-linecap="square">
+<g transform="translate(4 22) scale(1.3)" stroke-width="1.6">${I.castle[1]}</g>
+<path class="f-a1" d="M64 60 L88 22 H104 L128 60 Z"/><path d="M88 22 L94 26 H98 L104 22"/><path d="M95 18 Q90 13 95 9 Q100 5 98 2"/><path d="M134 61 H218"/>
+<g class="btrain"><path class="f-a4" d="M140 34 H204 Q212 34 212 42 V54 H140 Z"/><path d="M146 39 H156 V46 H146 Z M162 39 H172 V46 H162 Z M178 39 H188 V46 H178 Z M194 39 H202"/><path class="brass-s" d="M141 50.5 H211"/><circle cx="152" cy="57" r="3"/><circle cx="172" cy="57" r="3"/><circle cx="196" cy="57" r="3"/></g>
+<path class="f-a3" d="M220 61 Q233 55 247 61 Z"/><path d="M227 52 Q223 45 228 39 Q233 33 229 26 M239 52 Q235 45 240 39 Q245 33 241 26"/><path class="brass-s" d="M2 64 H249"/></g></svg>`;
+ return {svg:k=>wrap(I[k][1],I[k][0]),label:k=>I[k][0],pick,brand};
+})();
+const REDUCE=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- 提示訊息 ---------- */
+let toastT;
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),4000)}
+
+/* ---------- 行程調整（拖曳、改時間、新增）：只存在這台裝置 ---------- */
+const EDK="ky-edits-v2"; // DAYS 結構大改時換 key，避免舊調整對錯行
+let E=(()=>{const e=store.get(EDK,null);return e&&e.ov&&Array.isArray(e.add)?e:{ov:{},add:[]}})();
+const undoStack=[];
+function commitE(fn,msg){undoStack.push(JSON.stringify(E));if(undoStack.length>60)undoStack.shift();fn();store.set(EDK,E);refreshPlan();if(msg)toast(msg)}
+function undoE(){if(!undoStack.length){toast("沒有可以復原的動作");return}E=JSON.parse(undoStack.pop());store.set(EDK,E);refreshPlan();toast("已復原")}
+const toMin=s=>{const m=/^(\d{1,2}):(\d{2})$/.exec(String(s||"").trim());return m?+m[1]*60+ +m[2]:null};
+const fmtM=m=>String(Math.floor(m/60)).padStart(2,"0")+":"+String(((m%60)+60)%60).padStart(2,"0");
+const durTx=m=>m<60?`${m} 分`:`${Math.floor(m/60)} 小時${m%60?" "+m%60+" 分":""}`;
+function parseT(t){if(!t)return{s:null,e:null};const [a,b]=String(t).split("–");return{s:toMin(a),e:b?toMin(b):null,open:b===""}}
+function allRows(){
+ const out=[];
+ DAYS.forEach(d=>d.rows.forEach((r,i)=>out.push(Object.assign({},r,{id:d.n+"-"+i,n:d.n,ord:d.n*1000+i}))));
+ E.add.forEach((a,i)=>out.push(Object.assign({nt:[],how:"",mp:""},a,{ord:a.n*1000+900+i,custom:1})));
+ return out.map(r=>{const o=E.ov[r.id];return o?Object.assign({},r,o,{edited:!r.custom}):r}).filter(r=>!r.del);
+}
+function rowsOf(n){
+ const rs=allRows().filter(r=>r.n===n).sort((a,b)=>a.ord-b.ord);
+ let pk=-1;rs.forEach(r=>{const {s}=parseT(r.t);r._s=s;r._k=s!=null?s:pk+0.001;pk=r._k});
+ rs.sort((a,b)=>a._k-b._k||a.ord-b.ord);
+ rs.forEach((r,i)=>{
+  const p=parseT(r.t);r._e=p.e;
+  if(r._s==null){r._d=null;return}
+  if(p.e!=null&&p.e>r._s){r._d=p.e-r._s;return}
+  const nx=rs.slice(i+1).find(x=>x._s!=null&&x._s>r._s);
+  r._d=nx?Math.max(15,Math.min(180,nx._s-r._s)):60;
+ });
+ const tm=rs.filter(r=>r._s!=null&&r._e!=null&&r._e>r._s);
+ tm.forEach(r=>{r._warn=tm.some(x=>x!==r&&x._s<r._e&&x._e>r._s)});
+ return rs;
+}
+function setOv(r,patch){
+ if(r.custom){const a=E.add.find(x=>x.id===r.id);if(a)Object.assign(a,patch)}
+ else E.ov[r.id]=Object.assign({},E.ov[r.id],patch);
+}
+function findRow(id){return allRows().find(r=>r.id===id)}
+/* 同一天移動時，緊接在前面的交通段跟著平移（只更新受影響的相鄰路段） */
+function applyMove(id,n,start,dur){
+ const rs=rowsOf(findRow(id).n),r=rs.find(x=>x.id===id),old=r._s,delta=start-old;let fol=null;
+ if(r.k!=="m"&&n===r.n&&delta){
+  const prev=rs.filter(x=>x.k==="m"&&x.id!==id&&x._s!=null&&x._s<old&&Math.abs(x._s+x._d-old)<=10).pop();
+  if(prev){setOv(prev,{t:fmtM(prev._s+delta)+"–"+fmtM(prev._s+delta+prev._d)});fol=prev}
+ }
+ setOv(r,{n,t:fmtM(start)+"–"+fmtM(start+dur)});
+ return fol;
+}
+function overlapMsg(id){const r=rowsOf(findRow(id).n).find(x=>x.id===id);return r&&r._warn?"｜⚠ 跟其他行程時間重疊":""}
+
+/* ---------- 週曆 ---------- */
+let VIEW=store.get("ky-view","day");if(VIEW!=="week")VIEW="day";
+const PPM=0.8,H0=6*60,H1=24*60;
+const KC={s:"var(--sight)",f:"var(--food)",b:"var(--shop)",m:"var(--move)",h:"var(--stay)"};
+function lanes(items){
+ const out=[];let cl=[],ln=[],ce=-1;
+ const flush=()=>{cl.forEach(o=>o.cnt=ln.length);out.push(...cl);cl=[];ln=[];ce=-1};
+ items.forEach(r=>{const s=r._s,e=r._s+r._d;if(cl.length&&s>=ce)flush();let k=ln.findIndex(x=>x<=s);if(k<0){k=ln.length;ln.push(e)}else ln[k]=e;cl.push({r,k});ce=Math.max(ce,e)});
+ flush();return out;
+}
+function weekHtml(){
+ const w=Math.floor((cur-1)/7),cols=DAYS.slice(w*7,w*7+7),H=(H1-H0)*PPM;
+ let h=`<div class="wk-nav"><button type="button" class="ibtn" data-wk="-1" ${w===0?"disabled":""} aria-label="上一週">‹</button><b>第 ${w+1} 週・${cols[0].d}～${cols[cols.length-1].d}</b><button type="button" class="ibtn" data-wk="1" ${w>=1?"disabled":""} aria-label="下一週">›</button></div>
+ <p class="small wk-tip">按住行程 3 秒可以拖到別的時間或別天；拉卡片底部可以改時長；點兩下編輯。只會存在這台裝置。</p>
+ <div class="wkwrap"><div class="wk" style="--hour:${60*PPM}px;grid-template-columns:44px repeat(${cols.length},minmax(96px,1fr))"><div class="wk-h"></div>`;
+ cols.forEach(d=>{h+=`<div class="wk-h${d.n===cur?" sel":""}"><button type="button" data-wday="${d.n}"><b>${esc(d.d)}</b>週${esc(d.w)}${d.tag?"・"+esc(d.tag):""}</button></div>`});
+ h+=`<div class="wk-axis" style="height:${H}px">`;
+ for(let x=H0/60+1;x<H1/60;x++)h+=`<span style="top:${(x*60-H0)*PPM}px">${String(x).padStart(2,"0")}</span>`;
+ h+="</div>";
+ cols.forEach(d=>{
+  h+=`<div class="wk-col" data-n="${d.n}" style="height:${H}px">`;
+  lanes(rowsOf(d.n).filter(r=>r._s!=null)).forEach(({r,k,cnt})=>{
+   const top=(Math.max(r._s,H0)-H0)*PPM,hh=Math.max(r._d*PPM,20);
+   h+=`<div class="ev${r._warn?" warn":""}${r.edited||r.custom?" ed":""}" data-id="${r.id}" tabindex="0" role="button" aria-label="${esc(r.ti)} ${fmtM(r._s)}" style="--c:${KC[r.k]};top:${top}px;height:${hh}px;left:calc(${k/cnt*100}% + 2px);width:calc(${100/cnt}% - 4px)"><span class="et">${fmtM(r._s)}</span> <span class="en">${esc(r.ti)}</span><span class="rz" aria-hidden="true"></span></div>`;
+  });
+  h+="</div>";
+ });
+ return h+"</div></div>";
+}
+
+/* 拖曳與調整時長 */
+let hold=null,clickT=null,justDragged=false;
+function bindWeek(){
+ const day=$("day");
+ day.addEventListener("pointerdown",e=>{
+  if(VIEW!=="week"||e.button!==0)return;
+  const ev=e.target.closest(".ev");if(!ev)return;
+  const r=rowsOf(findRow(ev.dataset.id).n).find(x=>x.id===ev.dataset.id);if(!r)return;
+  if(e.target.classList.contains("rz")){e.preventDefault();hold={mode:"rz",el:ev,r,y0:e.clientY,d:r._d,d0:r._d};ev.setPointerCapture(e.pointerId);return}
+  const b=ev.getBoundingClientRect();
+  hold={mode:"wait",el:ev,r,x0:e.clientX,y0:e.clientY,grab:(e.clientY-b.top)/PPM,pid:e.pointerId};
+  hold.t1=setTimeout(()=>hold&&hold.mode==="wait"&&ev.classList.add("holding"),400);
+  hold.t=setTimeout(()=>{
+   if(!hold||hold.mode!=="wait")return;
+   hold.mode="drag";ev.classList.remove("holding");ev.classList.add("dragging");ev.style.pointerEvents="none";
+   try{ev.setPointerCapture(hold.pid)}catch(_){}
+   hidePop();clearTimeout(clickT);toast("拖到新時間後放開");
+  },3000);
+ });
+ window.addEventListener("pointermove",e=>{
+  if(!hold)return;
+  if(hold.mode==="wait"){if(Math.hypot(e.clientX-hold.x0,e.clientY-hold.y0)>6)cancelHold();return}
+  if(hold.mode==="rz"){hold.d=Math.max(5,Math.round((hold.d0+(e.clientY-hold.y0)/PPM)/5)*5);hold.el.style.height=Math.max(hold.d*PPM,20)+"px";return}
+  const col=document.elementsFromPoint(e.clientX,e.clientY).find(x=>x.classList&&x.classList.contains("wk-col"));if(!col)return;
+  const b=col.getBoundingClientRect();let m=Math.round(((e.clientY-b.top)/PPM+H0-hold.grab)/15)*15;m=Math.max(H0,Math.min(H1-15,m));
+  if(hold.el.parentElement!==col)col.appendChild(hold.el);
+  hold.el.style.top=(m-H0)*PPM+"px";hold.el.style.left="2px";hold.el.style.width="calc(100% - 4px)";
+  hold.to={n:+col.dataset.n,s:m};
+ });
+ const end=()=>{
+  if(!hold)return;const h=hold;clearTimeout(h.t);clearTimeout(h.t1);h.el.classList.remove("holding");hold=null;
+  if(h.mode==="rz"){justDragged=true;setTimeout(()=>justDragged=false,300);if(h.d!==h.d0){commitE(()=>setOv(h.r,{t:fmtM(h.r._s)+"–"+fmtM(h.r._s+h.d)}));toast(`時長改為 ${durTx(h.d)}${overlapMsg(h.r.id)}`)}else refreshPlan()}
+  else if(h.mode==="drag"){
+   justDragged=true;setTimeout(()=>justDragged=false,300);
+   if(h.to&&(h.to.n!==h.r.n||h.to.s!==h.r._s)){let fol=null;commitE(()=>{fol=applyMove(h.r.id,h.to.n,h.to.s,h.r._d)});toast(`已移到 ${DAYS[h.to.n-1].d} ${fmtM(h.to.s)}${fol?"，前一段交通一併調整":""}${overlapMsg(h.r.id)}`)}
+   else refreshPlan();
+  }
+ };
+ window.addEventListener("pointerup",end);
+ window.addEventListener("pointercancel",()=>{if(hold&&hold.mode==="wait")cancelHold();else end()});
+ day.addEventListener("click",e=>{
+  const v=e.target.closest("[data-view]");if(v){VIEW=v.dataset.view;store.set("ky-view",VIEW);refreshPlan();return}
+  if(e.target.closest("#undoBtn")){undoE();return}
+  if(e.target.closest("#addBtn")){openEd(null);return}
+  const wk=e.target.closest("[data-wk]");if(wk&&!wk.disabled){goDay(Math.max(1,Math.min(14,cur+ +wk.dataset.wk*7)),false);return}
+  const wd=e.target.closest("[data-wday]");if(wd){goDay(+wd.dataset.wday,false);return}
+  const ev=e.target.closest(".ev");if(!ev)return;
+  if(justDragged){justDragged=false;return}
+  clearTimeout(clickT);clickT=setTimeout(()=>showPop(ev.dataset.id,ev),230);
+ });
+ day.addEventListener("dblclick",e=>{const ev=e.target.closest(".ev");if(!ev)return;clearTimeout(clickT);hidePop();openEd(ev.dataset.id)});
+ day.addEventListener("keydown",e=>{const ev=e.target.closest(".ev");if(!ev)return;if(e.key==="Enter"){e.preventDefault();openEd(ev.dataset.id)}else if(e.key===" "){e.preventDefault();showPop(ev.dataset.id,ev)}});
+}
+function cancelHold(){if(!hold)return;clearTimeout(hold.t);clearTimeout(hold.t1);hold.el.classList.remove("holding");hold=null}
+
+/* 預覽小卡 */
+function showPop(id,anchor){
+ const r=rowsOf(findRow(id).n).find(x=>x.id===id);if(!r)return;const d=DAYS[r.n-1],p=$("pop");
+ p.style.setProperty("--c",KC[r.k]);
+ p.innerHTML=`<h4>${esc(r.ti)}</h4><p class="num">${esc(d.d)}（${esc(d.w)}）${r._s!=null?fmtM(r._s)+"–"+fmtM(r._s+r._d):""}</p><p>${TYPES[r.k]}${r.fl?"・"+esc(r.fl):""}${r._warn?"・⚠ 時間重疊":""}</p>${r.how?`<p>${esc(r.how)}</p>`:""}${r.nt&&r.nt.length?`<ul class="nt">${r.nt.slice(0,3).map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:""}
+ <div class="acts"><button type="button" class="nav" data-pa="edit">編輯</button>${r.mp?`<a class="nav" style="background:var(--head);color:var(--ink)" href="${navUrl(r.mp,d.mode)}" target="_blank" rel="noopener">${IC.nav}導航</a>`:""}<button type="button" class="nav" style="background:var(--head);color:var(--ink)" data-pa="day">看這天</button><span style="flex:1"></span><button type="button" class="ibtn" data-pa="x" aria-label="關閉">✕</button></div>`;
+ p.hidden=false;p.dataset.id=id;
+ const b=anchor.getBoundingClientRect(),pw=p.offsetWidth,ph=p.offsetHeight;
+ let l=b.right+8,t=b.top;if(l+pw>innerWidth-10){l=Math.max(10,Math.min(innerWidth-pw-10,b.left));t=b.bottom+8}
+ t=Math.max(10,Math.min(innerHeight-ph-10,t));p.style.left=l+"px";p.style.top=t+"px";
+}
+function hidePop(){$("pop").hidden=true}
+
+/* 編輯視窗 */
+let edId=null;
+function openEd(id){
+ hidePop();const f=$("edf").elements;
+ const r=id?rowsOf(findRow(id).n).find(x=>x.id===id):{k:"s",n:cur,ti:"",how:"",nt:[],_s:12*60,_d:60};
+ edId=id;
+ $("edt").textContent=id?"調整行程":"新增行程";
+ f.n.innerHTML=DAYS.map(d=>`<option value="${d.n}">DAY ${d.n}・${esc(d.d)}（${esc(d.w)}）${esc(d.r)}</option>`).join("");
+ f.ti.value=r.ti;f.k.value=r.k;f.n.value=r.n;
+ f.s.value=r._s!=null?fmtM(r._s):"";f.e.value=r._s!=null?fmtM(r._s+r._d):"";
+ f.how.value=r.how||"";f.nt.value=(r.nt||[]).join("\n");
+ $("edDel").hidden=!id;$("edReset").hidden=!(id&&r.edited);
+ $("ed").showModal();
+}
+function bindEditor(){
+ $("edCancel").onclick=()=>$("ed").close();
+ $("edDel").onclick=()=>{const r=findRow(edId);$("ed").close();commitE(()=>{if(r.custom)E.add=E.add.filter(x=>x.id!==edId);else setOv(r,{del:1})},`已刪除「${r.ti}」，可以按復原`)};
+ $("edReset").onclick=()=>{const r=findRow(edId);$("ed").close();commitE(()=>{delete E.ov[edId]},`「${r.ti}」已還原成原本的安排`)};
+ $("edf").addEventListener("submit",e=>{
+  e.preventDefault();const f=$("edf").elements;
+  const s=toMin(f.s.value),en=toMin(f.e.value);
+  if(!f.ti.value.trim()){toast("請填名稱");return}
+  const t=s==null?"":fmtM(s)+"–"+(en!=null&&en>s?fmtM(en):"");
+  const data={ti:f.ti.value.trim(),k:f.k.value,n:+f.n.value,t,how:f.how.value.trim(),nt:f.nt.value.split("\n").map(x=>x.trim()).filter(Boolean)};
+  $("ed").close();
+  if(edId){const r=findRow(edId);commitE(()=>setOv(r,data));toast(`已更新「${data.ti}」${overlapMsg(edId)}`)}
+  else{const id="c"+Date.now().toString(36);commitE(()=>E.add.push(Object.assign({id},data)));toast(`已新增「${data.ti}」${overlapMsg(id)}`)}
+  if(data.n!==cur)goDay(data.n,false);
+ });
+ $("pop").addEventListener("click",e=>{const b=e.target.closest("[data-pa]");if(!b)return;const id=$("pop").dataset.id;hidePop();
+  if(b.dataset.pa==="edit")openEd(id);else if(b.dataset.pa==="day"){VIEW="day";store.set("ky-view",VIEW);goDay(findRow(id).n,true)}});
+ document.addEventListener("pointerdown",e=>{if(!$("pop").hidden&&!e.target.closest("#pop")&&!e.target.closest(".ev"))hidePop()});
+ document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")hidePop();
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="z"&&!e.target.closest("input,textarea,select")&&VIEW==="week"){e.preventDefault();undoE()}
+ });
+}
+
+/* ---------- 日期列插圖 ---------- */
+let illoX=null;
+function placeIllo(anim){
+ const chip=document.querySelector(`.dchip[data-day="${cur}"]`),el=$("dillo");if(!chip||!el)return;
+ const x=chip.offsetLeft+chip.offsetWidth/2-20,k=ILLO.pick(DAYS[cur-1],rowsOf(cur));
+ el.innerHTML=ILLO.svg(k);el.setAttribute("aria-label",`${DAYS[cur-1].d} 插圖：${ILLO.label(k)}`);
+ if(anim&&!REDUCE&&illoX!=null&&illoX!==x&&el.animate)el.animate([{transform:`translateX(${illoX}px)`},{transform:`translateX(${illoX+(x-illoX)*.45}px) translateY(-4px)`,offset:.45},{transform:`translateX(${x}px)`}],{duration:550,easing:"cubic-bezier(.3,.1,.25,1)"});
+ el.style.transform=`translateX(${x}px)`;illoX=x;
+ if(anim&&!REDUCE){chip.classList.remove("bounce");void chip.offsetWidth;chip.classList.add("bounce")}
+}
+addEventListener("resize",()=>placeIllo(false));
+
+/* ---------- 備案分頁 ---------- */
+const BACKUP={
+ name:"極端天氣・不自駕",
+ when:"2/8 晚上看預報：2/9～2/11 阿蘇、黑川一帶大雪或道路封閉，才改用這個方案。",
+ already:"已經取車才變天：不上山，走國道 57 號平地，提早回熊本還車（訂車時先問能不能提早還、乘り捨て費多少）。",
+ days:[
+  {n:8,main:"別府取車 → 九重夢大吊橋 → 黑川溫泉街",mainT:"自駕",alt:"九重夢大吊橋取消；黑川溫泉街、入湯手形照常",altT:"九州橫斷巴士 別府 → 黑川（需預約）",bed:"やまの湯（不變）"},
+  {n:9,main:"鍋ヶ滝 → 大觀峰 → 阿蘇神社 → 阿蘇住宿",mainT:"自駕約 1.5 小時",alt:"黑川早晨泡湯 → 阿蘇神社＋門前町（宮地站走得到）→ 入住；鍋ヶ滝、大觀峰取消",altT:"九州橫斷巴士 黑川 → 阿蘇駅前＋JR 豐肥本線 阿蘇 → 宮地",bed:"奥阿蘇のあかまつ（不變）"},
+  {n:10,main:"草千里 → 上色見熊野座神社 → 高千穗、夜神樂",mainT:"自駕約 3 小時",alt:"上午 JR 回熊本、飯店放行李；下午熊本城、櫻之馬場城彩苑、勝烈亭；草千里、上色見、高千穗取消",altT:"JR 豐肥本線 宮地 → 熊本（約 1 小時 15 分）",bed:"熊本（多住一晚）"},
+  {n:11,main:"高千穗峽划船 → 天岩戶 → 回熊本還車",mainT:"自駕",alt:"水前寺成趣園、上通／下通（天氣好轉也不臨時租車上山）",altT:"市電",bed:"熊本"},
+  {n:12,main:"熊本城、城彩苑、水前寺",mainT:"市電",alt:"彈性日，補 2/11 沒去完的",altT:"市電",bed:"熊本"},
+  {n:13,main:"整天採購",mainT:"市電",alt:"整天採購（不變）",altT:"市電",bed:"熊本"}
+ ],
+ prep:["高千穗旅館一定訂「可免費取消」","熊本 2/11 那晚另訂一晚可免費取消的房，主方案成立就取消","租車問清楚取消、提早還車的規定"],
+ check:[["熊本縣 道路規制情報","熊本県 道路規制情報"],["阿蘇市 道路資訊（縣道 111 號阿蘇登山道、ミルクロード）","阿蘇市 道路情報"],["國道 325 號 高森峠","国道325号 高森峠 規制"],["九州橫斷巴士 預約、春節班次","九州横断バス 予約"],["JR 九州 運行情報（豐肥本線）","JR九州 運行情報 豊肥本線"],["氣象廳 阿蘇山火山資訊","気象庁 阿蘇山 噴火警戒レベル"]],
+ todo:["宮地站 → 奥阿蘇のあかまつ 走不走得到（走不到才搭計程車）","九州橫斷巴士的春節班次、有沒有停阿蘇駅前","JR 豐肥本線時刻（以 JR 九州官網為準）"]
+};
+function renderAlt(){
+ const done=store.get("ky-prep",{});
+ const small=DAYS.flatMap(d=>(d.alts||[]).filter(a=>!a.snow).map(a=>[d,a]));
+ $("p-alt").innerHTML=`
+  <div class="ph"><h2>備案</h2><p>天氣不好或景點停開時看這裡</p></div>
+  <section class="box bk-hero"><div class="bk-ic">${ILLO.svg("volcano")}</div><div><h3>${IC.alt}${esc(BACKUP.name)}</h3><p class="bk-when">${esc(BACKUP.when)}</p><p class="small">${esc(BACKUP.already)}</p></div></section>
+  <div class="sec-t"><h3>每天怎麼改</h3><span>上面是原本，下面是備案</span></div>
+  ${BACKUP.days.map(b=>{const d=DAYS[b.n-1];return `<section class="box bk-day"><div class="dh-top"><span class="dnum">DAY ${d.n}</span><span class="ddate">${esc(d.d)}（${esc(d.w)}）</span>${d.tag?`<span class="dtag">${esc(d.tag)}</span>`:""}<button type="button" class="bk-go" data-go="${d.n}" data-tabgo="plan">看原行程 →</button></div>
+   <div class="bk-cmp"><div class="bk-main"><span class="bk-l">原本</span><p>${esc(b.main)}</p><span class="bk-t">${IC.m}${esc(b.mainT)}</span></div>
+   <div class="bk-alt"><span class="bk-l">備案</span><p>${esc(b.alt)}</p><span class="bk-t">${IC.m}${esc(b.altT)}</span></div></div>
+   <div class="bed">${IC.h}住：${esc(b.bed)}</div></section>`}).join("")}
+  <section class="box"><h3>要先準備</h3><div class="ck">${BACKUP.prep.map((p,i)=>`<label><input type="checkbox" data-prep="${i}" ${done[i]?"checked":""}><span>${esc(p)}</span></label>`).join("")}</div></section>
+  <section class="box"><h3>出發前一晚＋當天早上查</h3><div class="bk-links">${BACKUP.check.map(([t,q])=>`<a href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")}</div><p class="small">連結是 Google 搜尋，點進去選官方網站。</p></section>
+  ${small.length?`<section class="box"><h3>各天的小備案</h3><div class="glist">${small.map(([d,a])=>`<div class="gi"><span class="tg book"><b>DAY ${d.n}</b>${esc(a.label)}</span><span>${esc(a.text||"")}</span></div>`).join("")}</div></section>`:""}
+  <section class="box"><h3>還要查的</h3><ul class="nt">${BACKUP.todo.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></section>`;
+}
+document.addEventListener("change",e=>{const c=e.target.closest("[data-prep]");if(!c)return;const d=store.get("ky-prep",{});d[c.dataset.prep]=c.checked;store.set("ky-prep",d)});
+
+/* ---------- 攜帶用品 ---------- */
+const PACK_COLORS=["#E8A33D","#4FA3C7","#D9534F","#5FB98E","#8E7CC3","#C98B5B"];
+const PACK_DEFAULT=[
+ {id:"p1",nm:"證件與錢",items:[["護照",4,"效期確認"],["台灣駕照＋日文譯本",1,"自駕必帶"],["日圓現金",1,""],["信用卡",2,""],["機票、住宿確認信",1,"手機離線存一份"]]},
+ {id:"p2",nm:"冬季衣物",items:[["羽絨外套",1,"阿蘇、高千穗山區很冷"],["發熱衣褲",3,""],["手套、毛帽、圍巾",1,""],["防滑好走的鞋",1,""]]},
+ {id:"p3",nm:"盥洗與溫泉",items:[["盥洗包",1,""],["溫泉小毛巾",2,""],["保濕乳液",1,"泡湯後很乾"]]},
+ {id:"p4",nm:"電子產品",items:[["網卡／eSIM",1,""],["行動電源",1,"只能手提"],["充電線、充電頭",1,""],["車用手機架",1,"自駕導航用"]]},
+ {id:"p5",nm:"藥品與保健",items:[["個人常備藥",1,""],["暖暖包",10,""],["暈車藥",1,"山路彎道多、由布院之森會晃"]]},
+ {id:"p6",nm:"購物與其他",items:[["折疊購物袋",2,""],["行李秤",1,"虎航託運 20kg"],["零錢包",1,"市電、巴士用"]]}
+].map(c=>({id:c.id,nm:c.nm,items:c.items.map(([nm,q,nt],i)=>({id:c.id+"-"+i,nm,q,nt,done:false}))}));
+let PK=(()=>{const p=store.get("ky-pack",null);return Array.isArray(p)?p:JSON.parse(JSON.stringify(PACK_DEFAULT))})();
+let pkF="all";
+function savePK(){store.set("ky-pack",PK);renderPack()}
+function renderPack(){
+ const box=$("packbox");if(!box)return;
+ const q=($("pkq")?$("pkq").value:"").trim().toLowerCase();
+ const all=PK.flatMap(c=>c.items),dn=all.filter(i=>i.done).length,pct=all.length?Math.round(dn/all.length*100):0;
+ box.querySelector(".pk-prog").innerHTML=`<div class="bar"><i style="width:${pct}%"></i></div><span class="num">${dn}/${all.length}（${pct}%）</span>`;
+ box.querySelector(".pk-grid").innerHTML=PK.map((c,ci)=>{
+  const its=c.items.filter(i=>(!q||(i.nm+i.nt).toLowerCase().includes(q))&&(pkF==="all"||(pkF==="done"?i.done:!i.done)));
+  return `<section class="pk-card" data-c="${c.id}" style="--c:${PACK_COLORS[ci%6]}"><header><span>${esc(c.nm)}</span><span class="num">${c.items.filter(i=>i.done).length}/${c.items.length}</span></header>
+  ${its.map(i=>`<div class="pk${i.done?" done":""}" data-i="${i.id}"><input type="checkbox" ${i.done?"checked":""} aria-label="完成 ${esc(i.nm)}"><div><span class="nm">${esc(i.nm)}</span><input class="pnt" value="${esc(i.nt||"")}" placeholder="備註" aria-label="${esc(i.nm)} 備註"></div><input type="number" class="num" min="0" value="${i.q}" aria-label="${esc(i.nm)} 數量"><button type="button" class="pdel" aria-label="刪除 ${esc(i.nm)}">✕</button></div>`).join("")||`<p class="small" style="padding:8px 12px">沒有符合的用品</p>`}
+  <form class="pk-add"><input placeholder="新增用品" aria-label="新增用品到${esc(c.nm)}"><button class="nav" style="border:0">加入</button></form></section>`}).join("");
+}
+function bindPack(){
+ document.addEventListener("input",e=>{if(e.target.id==="pkq")renderPack()});
+ document.addEventListener("click",e=>{
+  const f=e.target.closest("[data-pkf]");if(f){pkF=f.dataset.pkf;document.querySelectorAll("[data-pkf]").forEach(b=>b.setAttribute("aria-pressed",b===f));renderPack();return}
+  const d=e.target.closest(".pdel");if(d){const c=PK.find(x=>x.id===d.closest(".pk-card").dataset.c);const id=d.closest(".pk").dataset.i;const it=c.items.find(i=>i.id===id);c.items=c.items.filter(i=>i.id!==id);savePK();toast(`已刪除「${it.nm}」`)}
+ });
+ document.addEventListener("change",e=>{
+  const row=e.target.closest(".pk");if(!row)return;
+  const c=PK.find(x=>x.id===row.closest(".pk-card").dataset.c),it=c.items.find(i=>i.id===row.dataset.i);
+  if(e.target.type==="checkbox")it.done=e.target.checked;else if(e.target.type==="number")it.q=+e.target.value||0;else if(e.target.classList.contains("pnt"))it.nt=e.target.value;
+  savePK();
+ });
+ document.addEventListener("submit",e=>{
+  const fm=e.target.closest(".pk-add");if(!fm)return;e.preventDefault();
+  const v=fm.querySelector("input").value.trim();if(!v)return;
+  PK.find(x=>x.id===fm.closest(".pk-card").dataset.c).items.push({id:"u"+Date.now().toString(36),nm:v,q:1,nt:"",done:false});savePK();toast(`已加入「${v}」`);
+ });
+}
+
+/* ---------- 行程資料：匯出、匯入、還原 ---------- */
+function dl(name,text,type){const u=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function icsText(){
+ const enc=new TextEncoder();
+ const fold=l=>{const o=[];let c="",b=0;for(const ch of l){const n=enc.encode(ch).length;if(b+n>73){o.push(c);c=" ";b=1}c+=ch;b+=n}o.push(c);return o.join("\r\n")};
+ const e=s=>String(s||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n");
+ const st=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+ const loc=(n,m)=>{const t=new Date(Date.UTC(2027,1,n+1)+m*6e4),p=x=>String(x).padStart(2,"0");return `${t.getUTCFullYear()}${p(t.getUTCMonth()+1)}${p(t.getUTCDate())}T${p(t.getUTCHours())}${p(t.getUTCMinutes())}00`};
+ const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//kyushu2027//family//ZH-TW","CALSCALE:GREGORIAN","X-WR-CALNAME:2027 九州家族行","X-WR-TIMEZONE:Asia/Tokyo","BEGIN:VTIMEZONE","TZID:Asia/Tokyo","BEGIN:STANDARD","DTSTART:19700101T000000","TZOFFSETFROM:+0900","TZOFFSETTO:+0900","TZNAME:JST","END:STANDARD","END:VTIMEZONE"];
+ DAYS.forEach(d=>rowsOf(d.n).filter(r=>r._s!=null).forEach(r=>{
+  L.push("BEGIN:VEVENT","UID:"+r.id+"@kyushu-2027","DTSTAMP:"+st,"DTSTART;TZID=Asia/Tokyo:"+loc(d.n,r._s),"DTEND;TZID=Asia/Tokyo:"+loc(d.n,r._s+r._d),"SUMMARY:"+e(r.ti));
+  if(r.mp)L.push("LOCATION:"+e(r.mp));
+  const ds=[TYPES[r.k],r.how,...(r.nt||[])].filter(Boolean).join("\n");if(ds)L.push("DESCRIPTION:"+e(ds));
+  L.push("END:VEVENT");
+ }));
+ L.push("END:VCALENDAR");return L.map(fold).join("\r\n")+"\r\n";
+}
+function bindData(){
+ document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-dat]");if(!b)return;const a=b.dataset.dat;
+  if(a==="ics"){dl("kyushu-2027.ics",icsText(),"text/calendar");toast("已匯出，可以匯入 iPhone／Google 行事曆")}
+  else if(a==="json"){dl("kyushu-2027-調整.json",JSON.stringify({edits:E,pack:PK},null,2),"application/json");toast("已匯出 JSON")}
+  else if(a==="import")$("impf").click();
+  else if(a==="reset"){if(!Object.keys(E.ov).length&&!E.add.length){toast("目前沒有調整");return}commitE(()=>{E={ov:{},add:[]}},"已還原成原始行程，可以到週曆按復原")}
+ });
+ $("impf").addEventListener("change",e=>{
+  const f=e.target.files[0];if(!f)return;const rd=new FileReader();
+  rd.onload=()=>{try{const j=JSON.parse(rd.result);if(!j.edits||!j.edits.ov||!Array.isArray(j.edits.add))throw 0;commitE(()=>{E=j.edits});if(Array.isArray(j.pack)){PK=j.pack;savePK()}toast("已匯入")}catch(_){toast("匯入失敗：檔案格式不對")}e.target.value=""};
+  rd.readAsText(f);
+ });
+}
+function refreshPlan(){renderDay();placeIllo(false);renderGift()}
+
 /* ---------- 底部分頁 ---------- */
-const TABS=[["plan","行程"],["gift","伴手禮"],["order","點餐"],["info","旅行資訊"]];
+const TABS=[["plan","行程"],["alt","備案"],["gift","伴手禮"],["order","點餐"],["info","旅行資訊"]];
 $("tabbar").innerHTML=TABS.map(([k,n])=>`<button type="button" role="tab" id="tb-${k}" aria-controls="p-${k}" aria-selected="false" data-tab="${k}">${IC[k]}${n}</button>`).join("");
 function showTab(k){
  TABS.forEach(([t])=>{$("p-"+t).hidden=t!==k;$("tb-"+t).setAttribute("aria-selected",t===k)});
  store.set("ky-tab",k);window.scrollTo(0,0);
- if(k==="plan"){const c=document.querySelector('.dchip[aria-current="true"]');if(c)c.scrollIntoView({inline:"center",block:"nearest"})}
+ if(k==="plan"){const c=document.querySelector('.dchip[aria-current="true"]');if(c)c.scrollIntoView({inline:"center",block:"nearest"});requestAnimationFrame(()=>placeIllo(false))}
 }
 $("tabbar").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)showTab(b.dataset.tab)});
 
-renderStrip();renderDay();renderGift();renderOrder();renderInfo();
+$("brandart").innerHTML=ILLO.brand();
+bindWeek();bindEditor();bindPack();bindData();
+renderStrip();renderDay();renderGift();renderOrder();renderInfo();renderAlt();renderPack();
+requestAnimationFrame(()=>placeIllo(false));
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tabgo]");if(b){VIEW="day";store.set("ky-view",VIEW);showTab(b.dataset.tabgo);goDay(+b.dataset.go,true)}});
 const hash=location.hash.slice(1);
 if(/^d\d{1,2}$/.test(hash)){goDay(+hash.slice(1));showTab("plan")}
-else if(["plan","gift","order","info"].includes(hash))showTab(hash);
-else{const t=store.get("ky-tab","plan");showTab(["plan","gift","order","info"].includes(t)?t:"plan")}
+else if(["plan","alt","gift","order","info"].includes(hash))showTab(hash);
+else{const t=store.get("ky-tab","plan");showTab(["plan","alt","gift","order","info"].includes(t)?t:"plan")}
 </script>
 </body></html>
